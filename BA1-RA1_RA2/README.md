@@ -40,9 +40,9 @@ L’any 1975, el comitè **ANSI-SPARC** va proposar una arquitectura de tres niv
 
 ### Nivells d’abstracció
 
-- Nivell intern o físic: el més proper a l’emmagatzematge. Defineix com s’organitzen els arxius, els mètodes d’accés i la representació física de les dades.
-- Nivell conceptual: descriu l’estructura completa de la BD (entitats, atributs, relacions i restriccions) amagant els detalls físics.
-- Nivell extern o de visió: defineix les vistes dels usuaris, mostrant només la part de la BD que els interessa.
+- **Nivell intern o físic:** el més proper a l’emmagatzematge. Defineix com s’organitzen els arxius, els mètodes d’accés i la representació física de les dades.
+- **Nivell conceptual:** descriu l’estructura completa de la BD (entitats, atributs, relacions i restriccions) amagant els detalls físics.
+- **Nivell extern o de visió:** defineix les vistes dels usuaris, mostrant només la part de la BD que els interessa.
 
   <div style="text-align: center;">
     <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%201.%20Nivell%20d'abstracci%C3%B3%20de%20l'arquitectura%20ANSI.png" alt="ANSI" width="650" height="auto"/>
@@ -65,7 +65,7 @@ Aquesta arquitectura introdueix dos tipus d’independència:
 
 - **Independència lògica:** permet modificar l’esquema conceptual sense afectar els esquemes externs ni els programes.
 - **Independència física:** permet reorganitzar o canviar l’estructura interna sense afectar l’esquema conceptual ni els externs.
-- 
+
 ### Limitacions
 Encara que el model és teòricament molt útil, pocs SGBD han implementat completament aquesta arquitectura, ja que la transformació entre nivells pot reduir l’eficiència del sistema.
 
