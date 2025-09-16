@@ -125,7 +125,7 @@ Amb el temps, els DBA disposen d’eines cada cop més avançades que faciliten 
 
 ---
 
-## 3. Model de dades
+## 4. Model de dades
 
 Un dels objectius principals d’un **SGBD** és proporcionar als usuaris una visió **abstracta** de les dades, amagant els detalls de com estan emmagatzemades físicament.  
 Aquesta abstracció es representa amb els **models de dades**, que s’organitzen en tres nivells segons l’arquitectura ANSI-SPARC:
@@ -140,18 +140,49 @@ En una BD hi ha **un únic nivell físic i lògic**, però es poden definir **m�
 Per fer-nos una idea dels tres nivells d'abstracció, ens imaginem un arxiu d'articles amb els següents registres:
 
 ```C
- struct ARTICULOS
+ struct ARTICLES
  { int Cod;
  char Deno[15];
- int cant_almacen;
- int cant_minima ;
- int uni_vendidas;
+ int cant_magatzem;
+ int cant_minima;
+ int uni_venuda;
  float PVP;
- char reponer;
- struct VENTAS Tventas[12];
+ char reposar;
+ struct VENDES Tvendes[12];
  };
 ```
 
+El nivell físic és el conjunt de bytes que es troben emmagatzemats a l'arxiu en un dispositiu magnetic, que pot ser un disc, una pista o un sector determinat. 
+
+A nivell lògic compren la descripció i la relació amb altres registres que es fan del registre dins d'un programa, amb un llenguatge de programació. 
+
+L'últim nivell d'abstracció, **l'extern**, és la visió d'aquestes dades que té un usuari quan executa aplicacions que operen amb ells, l'usuari no sap el detall de les dades.
+
+Si traslladem l'exemple a una BD relacional específica n'hi haurà, com en el cas anterior, un únic nivell intern i un únic nivell lògic o conceptual, però n'hi pot haver diversos nivells externs, cadascun definit per a un o per a diversos usuaris. Podria ser el
+següent:
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%202.%20Vista%20de%20la%20BD%20per%20un%20usuari.png" alt="BD" width="650" height="auto"/>
+    <p><em>Figura 2: Vista de la BD per a un usuari</em></p>
+  </div>
+
+**Nivell extern:** visió parcial de les taules de la BD segons l'usuari. Per exemple, la vista que es mostra a la Figura 2 obté el llistat de notes d'alumnes amb les dades següents: Curs, Nom, Nom d'assignatura i Nota.
+
+**Nivell lògic i conceptual:** definició de totes les taules, columnes, restriccions, claus i relacions. En aquest exemple, disposem de tres taules que hi estan relacionades:
+
+- Taula *ALUMNES*. Columnes: num_matricula, nom, curs, adreça, poblacio. Clau: num_matricula. A més, té una relació amb NOTES, ja que un alumne pot tenir notes en diverses assignatures.
+- Taula *ASSIGNATURES*. Columnes: codi, nom_assignatura. Clau: codi. Està relacionada amb NOTES, ja que per a una assignatura hi ha diverses notes, tantes com a alumnes la cursin.
+- Taula *NOTES*. Columnes: num_matricula, codi, nota. Està relacionada amb ALUMNES i ASSIGNATURES, ja que un alumne té notes en diverses assignatures, i d'una assignatura hi ha diverses notes, tantes com alumnes.
+
+Podem representar les relacions de les taules en el nivell lògic com es mostra a la Figura 3:
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%203.%20Representaci%C3%B3%20de%20les%20relacions%20entre%20taules%20al%20nivell%20l%C3%B2gic.png" alt="BD" width="650" height="auto"/>
+    <p><em>Figura 3: Representació de les relacions entre taules al nivell lògic</em></p>
+  </div>
+
+**Nivell intern:** En una BD les taules s'emmagatzemen en fitxers de dades de la BD. Si hi ha claus, es creen índexs per accedir a les dades, tot això contingut al disc dur, en una pista i en un sector, que només el SGBD coneix. Davant d'una petició, sap a quina pista, a quin sector, a quin fitxer de dades i a quins índexs accedir.
+ 
 Els **models de dades** són conjunts de conceptes i eines per descriure l’estructura d’una BD, les seves relacions i restriccions. La descripció d’una BD amb un model de dades s’anomena **esquema**.
 
 ### 1. Models lògics basats en objectes
@@ -176,3 +207,58 @@ Els **models de dades** són conjunts de conceptes i eines per descriure l’est
 - Descriuen **com s’emmagatzemen les dades**: formats de registres, organització d’arxius, mètodes d’accés.  
 - Exemples coneguts: **model unificador** i **model de memòria d’elements**.
 
+---
+
+## 5. Model entitat-relació
+
+El **model de dades Entitat-Relació (E-R)**, proposat per **Peter Chen el 1976**, és un dels més utilitzats per a la representació conceptual de problemes del món real.  
+El 1988 l’ANSI el va seleccionar com a model estàndard per als sistemes de diccionaris de recursos d’informació.
+
+Es representa mitjançant **gràfics i taules**, i proposa l’ús de **taules bidimensionals** per descriure dades i relacions.
+
+### Conceptes bàsics
+
+- **Entitat**: objecte del món real que té interès per a l’organització (ex. ALUMNES, CLIENTS).  
+  → Es representa amb un **rectangle**.
+- **Conjunt d’entitats**: grup d’entitats del mateix tipus (ex. conjunt d’ALUMNES). Poden coincidir amb altres conjunts.
+- **Entitat forta**: no depèn d’una altra per existir (ex. ALUMNE).  
+- **Entitat feble**: depèn d’una entitat forta per existir (ex. NOTA depèn d’ALUMNE).  
+  → Es representa amb **rectangle de doble línia**.
+- **Atributs**: propietats que descriuen una entitat (ex. matrícula, nom, adreça).  
+  → Es representen amb una **el·lipse**.  
+- **Domini**: conjunt de valors permesos d’un atribut (ex. “Nom” → cadenes de text).
+- **Identificador o superclau**: conjunt d’atributs que identifiquen de forma única una entitat.  
+  Ex. DNI + Nom + Adreça.
+- **Claus candidates**: superclaus mínimes que identifiquen de forma única una entitat.  
+  Ex. DNI, Número de la Seguretat Social.
+- **Clau primària**: clau candidata escollida pel dissenyador de la BD.  
+  Ha de ser **única, no nul·la, estable i fàcil de gestionar**.  
+  → Es representa **subratllada**.
+- **Clau forana (foreign key)**: atribut d’una entitat que és clau primària en una altra. Representa relacions entre taules.  
+  Ex. En **VENTES(codi venda, data, codi article, unitats)**, el **codi article** és clau forana que referencia **ARTICLES(codi article, descripció, stock)**.
+
+### A. Relacions i conjunts de relacions
+
+En el **model Entitat-Relació (E-R)**, una **relació** és l’associació entre diferents entitats.  
+- Es representa amb un **rombe** i té **nom de verb** que la diferencia de les altres.  
+- Normalment **no tenen atributs**. Si en tenen, vol dir que hi ha una **entitat associada** que encara no s’ha definit i que donarà lloc a una taula pròpia.  
+
+#### Conjunt de relacions
+Un **conjunt de relacions** és el conjunt de totes les associacions del mateix tipus.  
+Exemple: entre **ARTICLES** i **VENTES**, totes les vendes associades als articles formen un conjunt de relacions.
+
+- La majoria de conjunts són **binaris** (entre dues entitats).  
+- També poden existir relacions **n-àries** (entre més de dues entitats), ex. CLIENT – COMPTE – SUCURSAL.  
+- Una relació no binària sempre es pot transformar en diverses relacions binàries, tot i que no sempre és la millor opció.  
+
+#### Paper d’una entitat
+El **paper** és la funció que exerceix una entitat dins d’una relació. Normalment és implícit, però pot ser útil especificar-lo quan cal aclarir el significat de la relació.
+
+#### Relacions amb atributs
+Algunes relacions poden tenir **atributs descriptius**.  
+Exemple: la relació **COMPTE** pot tenir l’atribut **DATA_OPERACIO**, que indica l’última vegada que el client va accedir al seu compte (veure Figura 4).
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%204.%20Relaci%C3%B3%20amb%20atributs%20descriptius.png" alt="BD" width="650" height="auto"/>
+    <p><em>Figura 3: Relació amb atributs descriptius</em></p>
+  </div>
