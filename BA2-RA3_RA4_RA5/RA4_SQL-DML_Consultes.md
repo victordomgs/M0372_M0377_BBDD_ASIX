@@ -12,8 +12,6 @@ L'instrucció **SELECT** és la comanda més utilitzada en el llenguatge SQL (St
 
 Mitjançant aquesta comanda, també podem accedir a un registre concret d'una columna específica d'una taula. La taula que emmagatzema els registres retornats per la instrucció **SELECT** s'anomena **taula de resultats**.
 
----
-
 ### Sintaxi de l'instrucció SELECT en SQL
 
 ```sql
@@ -72,8 +70,6 @@ Obtindrem:
 | 206             | 19      | 91             | C1        |
 | 207             | 20      | 80             | B2        |
 
----
-
 ### Sintaxi de l'instrucció SELECT utilitzant la clàusula WHERE
 
 La clàusula **WHERE** s'utilitza amb la instrucció **SELECT** per retornar només aquelles files de la taula que compleixen la condició especificada a la consulta.
@@ -112,8 +108,6 @@ SELECT * FROM Employee_Details WHERE Emp_Panelty = 500;
 | 103              | Vivek       | Kolkata       | 35000          | 500             |
 | 104              | Shivam      | Goa           | 22000          | 500             |
 
----
-
 ### Sintaxi de l'instrucció SELECT utilitzant la clàusula GROUP BY
 
 La clàusula **GROUP BY** s'utilitza amb la instrucció **SELECT** per agrupar les dades comunes d'una columna d'una taula. És especialment útil quan es combinen amb funcions agregades com `SUM`, `AVG`, `COUNT`, etc., per obtenir resums o estadístiques de grups de dades.
@@ -151,8 +145,6 @@ GROUP BY Car_Price;
 |----------------|--------------|
 | 1000000        | 2        | 
 | 900000         | 2       |
-
----
 
 ### Sintaxi de l'instrucció SELECT utilitzant la clàusula HAVING
 
@@ -193,8 +185,6 @@ HAVING SUM(Employee_Salary) > 50000;
 |---------------------------|--------------------|
 | Delhi                   |      90000         |
 | Jaipur                    |     80000        |
-
----
 
 ### Sintaxi de l'instrucció SELECT utilitzant la clàusula ORDER BY
 
@@ -291,8 +281,6 @@ Tot i que no és obligatori incloure una clàusula **WHERE** en les instruccions
 La clàusula **WHERE** serveix per aplicar condicions específiques als registres. Només retorna o afecta aquells registres que compleixen les condicions especificades.
 
 La clàusula **WHERE** es pot utilitzar amb les instruccions **SELECT**, **UPDATE**, **DELETE**, entre d’altres.
-
----
 
 ### Sintaxi de l'instrucció WHERE en SQL
 
@@ -439,8 +427,6 @@ Amb la clàusula **ORDER BY**, podem ordenar els registres en ordre ascendent o 
 
 Abans d’escriure les consultes per ordenar els registres, vegem la **sintaxi**.
 
----
-
 ### Sintaxi de l'instrucció SELECT en ORDER BY
 
 Sintaxi per ordenar els registres en ordre ascendent:
@@ -543,7 +529,6 @@ Obtenint la següent sortida:
 | 9   | Aakash Yadav       | 32  | Mumbai       | 43500  |
 | 8   | Neeru Sharma       | 29  | Pune         | 40000  |
 | 5   | Balwant Singh      | 45  | Varanasi     | 36000  |
-
 
 #### Exemple 3: 
 
