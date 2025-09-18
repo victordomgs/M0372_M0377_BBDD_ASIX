@@ -4,8 +4,7 @@
 - [Instrucció SQL WHERE](#instrucció-SQL-WHERE)
 - [Instrucció SQL ORDER BY](#instrucció-SQL-ORDER-BY)
 
-
-
+---
 
 ## Instrucció SQL SELECT
 
