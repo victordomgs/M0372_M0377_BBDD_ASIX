@@ -163,7 +163,7 @@ següent:
 
   <div style="text-align: center;">
     <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%202.%20Vista%20de%20la%20BD%20per%20un%20usuari.png" alt="BD" width="650" height="auto"/>
-    <p><em>Figura 2: Vista de la BD per a un usuari</em></p>
+    <p><em>Figura 2: Vista de la BD per a un usuari.</em></p>
   </div>
 
 **Nivell extern:** visió parcial de les taules de la BD segons l'usuari. Per exemple, la vista que es mostra a la Figura 2 obté el llistat de notes d'alumnes amb les dades següents: Curs, Nom, Nom d'assignatura i Nota.
@@ -178,7 +178,7 @@ Podem representar les relacions de les taules en el nivell lògic com es mostra 
 
   <div style="text-align: center;">
     <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%203.%20Representaci%C3%B3%20de%20les%20relacions%20entre%20taules%20al%20nivell%20l%C3%B2gic.png" alt="BD" width="650" height="auto"/>
-    <p><em>Figura 3: Representació de les relacions entre taules al nivell lògic</em></p>
+    <p><em>Figura 3: Representació de les relacions entre taules al nivell lògic.</em></p>
   </div>
 
 **Nivell intern:** En una BD les taules s'emmagatzemen en fitxers de dades de la BD. Si hi ha claus, es creen índexs per accedir a les dades, tot això contingut al disc dur, en una pista i en un sector, que només el SGBD coneix. Davant d'una petició, sap a quina pista, a quin sector, a quin fitxer de dades i a quins índexs accedir.
@@ -260,5 +260,89 @@ Exemple: la relació **COMPTE** pot tenir l’atribut **DATA_OPERACIO**, que ind
 
   <div style="text-align: center;">
     <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%204.%20Relaci%C3%B3%20amb%20atributs%20descriptius.png" alt="BD" width="650" height="auto"/>
-    <p><em>Figura 3: Relació amb atributs descriptius</em></p>
+    <p><em>Figura 4: Relació amb atributs descriptius.</em></p>
+  </div>
+
+#### Diagrames d’estructures de dades en el model E-R
+
+Els diagrames Entitat-Relació representen l’estructura lògica d’una BD de manera gràfica. Els símbols utilitzats són els següents:
+– Rectangles per representar les entitats.
+– El·lipses per als atributs. L’atribut que forma part de la clau primària va subratllat.
+– Rombes per representar les relacions.
+– Les línies, que uneixen atributs a entitats i a relacions, i entitats a relacions.
+
+Si la fletxa té punta, en aquell sentit hi ha l’u, i si no en té, en aquell lloc hi ha els molts. L’orientació assenyala la cardinalitat.
+– Si la relació té atributs associats, se li uneixen a la relació.
+– Cada component s’etiqueta amb el nom del que representa.
+
+A la Figura 4 es mostra un diagrama E-R corresponent a PROVEÏDORS-ARTICLES.
+Un PROVEÏDOR SUBMINISTRA molts ARTICLES.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%205.%20Diagrama%20E-R.%20un%20proveidor%20subministra%20molts%20articles.png" alt="BD" width="650" height="auto"/>
+    <p><em>Figura 5: Diagrama E-R. Un proveidor subministra molts articles.</em></p>
+  </div>
+
+#### Grau i cardinalitat de les relacions
+
+Es defineix el **grau d’una relació** com el nombre de conjunts d’entitats que participen en el conjunt de relacions, o el que és el mateix, el nombre d’entitats que participen en una relació. Les relacions en què participen dues entitats són binàries o de grau dos. Si n’hi participen tres, seran ternàries o de grau tres. Els conjunts de relacions poden tenir qualsevol grau, tot i que l’ideal és tenir relacions binàries.
+
+Les relacions en què només participa una entitat s’anomenen anell o de grau u; relacionen una entitat amb ella mateixa, i se les anomena relacions reflexives. Per exemple, l’entitat EMPLEAT pot tenir una relació CAP DE amb ella mateixa: un empleat és CAP DE molts empleats i, alhora, el cap també és un empleat.
+
+Un altre exemple pot ser la relació DELEGAT DE dels alumnes d’un curs: el delegat també és alumne del curs. Vegeu la Figura 5.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%206.%20Relacions%20de%20grau%201.png" alt="BD" width="650" height="auto"/>
+    <p><em>Figura 6: Relacions de grau 1.</em></p>
+  </div>
+
+A la Figura 7 es mostra una relació de grau dos, que representa un proveïdor que subministra articles, i una altra de grau tres, que representa un client d’un banc que té diversos comptes, i cadascun en una sucursal:
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%207.%20Relacions%20de%20grau%202%20i%203.png" alt="BD" width="650" height="auto"/>
+    <p><em>Figura 7: Relacions de grau 2 i 3.</em></p>
+  </div>
+
+En el model E-R es representen certes restriccions a les quals s’han d’ajustar les dades contingudes en una BD. Aquestes són les restriccions de les cardinalitats d’assignació, que expressen el nombre d’entitats a les quals pot associar-se una altra entitat mitjançant un conjunt de relació.
+
+Les cardinalitats d’assignació es descriuen per a conjunts binaris de relacions. Són les següents:
+
+- **1:1, u a u.** A cada element de la primera entitat li correspon només un de la segona entitat, i a l’inrevés. Per exemple, un client d’un hotel ocupa una habitació, o un curs d’alumnes pertany a una aula, i a aquella aula només hi assisteix aquell grup d’alumnes. Vegeu la Figura 8:
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%208.%20Representaci%C3%B3%20de%20relacions%201%20a%201.png" alt="BD" width="650" height="auto"/>
+    <p><em>Figura 8: Representació de relacions 1 a 1.</em></p>
+  </div>
+
+- **1:N, u a molts.** A cada element de la primera entitat li corresponen un o més elements de la segona entitat, i a cada element de la segona entitat li correspon només un de la primera entitat. Per exemple, un proveïdor subministra molts articles (vegeu la Figura 9).
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%209.%20Representaci%C3%B3%20de%20relacions%201%20a%20molts.png" alt="BD" width="650" height="auto"/>
+    <p><em>Figura 9: Representació de relacions 1 a molts.</em></p>
+  </div>
+
+- **N:1, molts a u.** És el mateix cas que l’anterior però a l’inrevés; a cada element de la primera entitat li correspon un element de la segona, i a cada element de la segona entitat li corresponen diversos de la primera.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2010.%20Representaci%C3%B3%20de%20relacions%20molts%20a%20molts.png" alt="BD" width="650" height="auto"/>
+    <p><em>Figura 10: Representació de relacions molts a molts.</em></p>
+  </div>
+
+La cardinalitat d’una entitat serveix per conèixer el seu grau de participació en la relació, és a dir, el nombre de correspondències en què cada element de l’entitat intervé. Mesura l’obligatorietat de correspondència entre dues entitats.
+
+La representem entre parèntesis indicant els valors màxim i mínim: (màxim, mínim). Els valors per a la cardinalitat són: (0,1), (1,1), (0,N), (1,N) i (M,N). El valor 0 s’indica quan la participació de l’entitat és opcional.
+
+A la Figura 11, que es mostra a continuació, es representa el diagrama E-R en què comptem amb les següents entitats:
+
+- **EMPLEAT** està formada pels atributs Núm. Emple, Cognom, Salari i Comissió, essent l’atribut Núm. Emple la clau principal (representat amb el subratllat).
+- **DEPARTAMENT** està formada pels atributs Núm. Depart, Nom i Localitat, essent l’atribut Núm. Depart la clau principal.
+
+S’han definit dues relacions:
+
+- La relació «pertany» entre les entitats EMPLEATS i DEPARTAMENT, el tipus de correspondència de la qual és 1:N, és a dir, a un departament li pertanyen zero o més empleats (0,N). Un empleat pertany a un departament i només a un (1,1).
+- La relació «responsable», que associa l’entitat EMPLEAT amb ella mateixa. El seu tipus de correspondència és 1:N, és a dir, un empleat és cap de zero o més empleats (0,N). Un empleat té un cap i només un (1,1). Vegeu la Figura 1.10:
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2011.%20Diagrama%20E-R%20de%20les%20relacions%20entre%20departaments%20i%20empleats.png" alt="BD" width="650" height="auto"/>
+    <p><em>Figura 11: Diagrama E-R de les relacions entre departaments i empleats.</em></p>
   </div>
