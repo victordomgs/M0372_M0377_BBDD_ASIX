@@ -259,7 +259,7 @@ Algunes relacions poden tenir **atributs descriptius**.
 Exemple: la relació **COMPTE** pot tenir l’atribut **DATA_OPERACIO**, que indica l’última vegada que el client va accedir al seu compte (veure Figura 4).
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%204.%20Relaci%C3%B3%20amb%20atributs%20descriptius.png" alt="BD" width="650" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%204.%20Relaci%C3%B3%20amb%20atributs%20descriptius.png" alt="BD" width="450" height="auto"/>
     <p><em>Figura 4: Relació amb atributs descriptius.</em></p>
   </div>
 
@@ -292,14 +292,14 @@ Les relacions en què només participa una entitat s’anomenen anell o de grau 
 Un altre exemple pot ser la relació DELEGAT DE dels alumnes d’un curs: el delegat també és alumne del curs. Vegeu la Figura 5.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%206.%20Relacions%20de%20grau%201.png" alt="BD" width="650" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%206.%20Relacions%20de%20grau%201.png" alt="BD" width="450" height="auto"/>
     <p><em>Figura 6: Relacions de grau 1.</em></p>
   </div>
 
 A la Figura 7 es mostra una relació de grau dos, que representa un proveïdor que subministra articles, i una altra de grau tres, que representa un client d’un banc que té diversos comptes, i cadascun en una sucursal:
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%207.%20Relacions%20de%20grau%202%20i%203.png" alt="BD" width="650" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%207.%20Relacions%20de%20grau%202%20i%203.png" alt="BD" width="550" height="auto"/>
     <p><em>Figura 7: Relacions de grau 2 i 3.</em></p>
   </div>
 
@@ -310,21 +310,21 @@ Les cardinalitats d’assignació es descriuen per a conjunts binaris de relacio
 - **1:1, u a u.** A cada element de la primera entitat li correspon només un de la segona entitat, i a l’inrevés. Per exemple, un client d’un hotel ocupa una habitació, o un curs d’alumnes pertany a una aula, i a aquella aula només hi assisteix aquell grup d’alumnes. Vegeu la Figura 8:
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%208.%20Representaci%C3%B3%20de%20relacions%201%20a%201.png" alt="BD" width="650" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%208.%20Representaci%C3%B3%20de%20relacions%201%20a%201.png" alt="BD" width="550" height="auto"/>
     <p><em>Figura 8: Representació de relacions 1 a 1.</em></p>
   </div>
 
 - **1:N, u a molts.** A cada element de la primera entitat li corresponen un o més elements de la segona entitat, i a cada element de la segona entitat li correspon només un de la primera entitat. Per exemple, un proveïdor subministra molts articles (vegeu la Figura 9).
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%209.%20Representaci%C3%B3%20de%20relacions%201%20a%20molts.png" alt="BD" width="650" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%209.%20Representaci%C3%B3%20de%20relacions%201%20a%20molts.png" alt="BD" width="550" height="auto"/>
     <p><em>Figura 9: Representació de relacions 1 a molts.</em></p>
   </div>
 
 - **N:1, molts a u.** És el mateix cas que l’anterior però a l’inrevés; a cada element de la primera entitat li correspon un element de la segona, i a cada element de la segona entitat li corresponen diversos de la primera.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2010.%20Representaci%C3%B3%20de%20relacions%20molts%20a%20molts.png" alt="BD" width="650" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2010.%20Representaci%C3%B3%20de%20relacions%20molts%20a%20molts.png" alt="BD" width="550" height="auto"/>
     <p><em>Figura 10: Representació de relacions molts a molts.</em></p>
   </div>
 
@@ -343,6 +343,6 @@ S’han definit dues relacions:
 - La relació «responsable», que associa l’entitat EMPLEAT amb ella mateixa. El seu tipus de correspondència és 1:N, és a dir, un empleat és cap de zero o més empleats (0,N). Un empleat té un cap i només un (1,1). Vegeu la Figura 1.10:
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2011.%20Diagrama%20E-R%20de%20les%20relacions%20entre%20departaments%20i%20empleats.png" alt="BD" width="650" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2011.%20Diagrama%20E-R%20de%20les%20relacions%20entre%20departaments%20i%20empleats.png" alt="BD" width="950" height="auto"/>
     <p><em>Figura 11: Diagrama E-R de les relacions entre departaments i empleats.</em></p>
   </div>
