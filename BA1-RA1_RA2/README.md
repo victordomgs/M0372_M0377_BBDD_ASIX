@@ -266,14 +266,14 @@ Exemple: la relació **COMPTE** pot tenir l’atribut **DATA_OPERACIO**, que ind
 #### Diagrames d’estructures de dades en el model E-R
 
 Els diagrames Entitat-Relació representen l’estructura lògica d’una BD de manera gràfica. Els símbols utilitzats són els següents:
-– Rectangles per representar les entitats.
-– El·lipses per als atributs. L’atribut que forma part de la clau primària va subratllat.
-– Rombes per representar les relacions.
-– Les línies, que uneixen atributs a entitats i a relacions, i entitats a relacions.
+- Rectangles per representar les entitats.
+- El·lipses per als atributs. L’atribut que forma part de la clau primària va subratllat.
+- Rombes per representar les relacions.
+- Les línies, que uneixen atributs a entitats i a relacions, i entitats a relacions.
 
 Si la fletxa té punta, en aquell sentit hi ha l’u, i si no en té, en aquell lloc hi ha els molts. L’orientació assenyala la cardinalitat.
-– Si la relació té atributs associats, se li uneixen a la relació.
-– Cada component s’etiqueta amb el nom del que representa.
+- Si la relació té atributs associats, se li uneixen a la relació.
+- Cada component s’etiqueta amb el nom del que representa.
 
 A la Figura 4 es mostra un diagrama E-R corresponent a PROVEÏDORS-ARTICLES.
 Un PROVEÏDOR SUBMINISTRA molts ARTICLES.
