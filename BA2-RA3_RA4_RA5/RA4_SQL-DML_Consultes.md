@@ -111,7 +111,7 @@ Obtindrem:
 | Lucknow       |
 | Varanasi      |
 
----
+<br>
 
 ## Instrucció SQL WHERE
 
