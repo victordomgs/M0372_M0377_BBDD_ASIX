@@ -425,7 +425,7 @@ Com a resultat obtenim:
 | 3   | Ajeet Bhargav      | 45  | Meerut       | 65000  |
 | 10  | Sahil Sheikh       | 35  | Aurangabad   | 68800  |
 
----
+<br>
 
 ## SQL DATE FUNCTIONS
 
