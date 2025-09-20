@@ -250,7 +250,7 @@ Obtenint d'aquesta manera els següents resultats:
 | 1   | Himani Gupta       | 21  | Modinagar    | 22000  |
 | 9   | Aakash Yadav       | 32  | Mumbai       | 43500  |
 
----
+<br>
 
 ## Instrucció SQL ORDER BY
 
