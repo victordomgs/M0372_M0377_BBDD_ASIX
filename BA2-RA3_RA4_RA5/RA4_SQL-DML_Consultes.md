@@ -3,6 +3,7 @@
 - [Instrucció SQL SELECT](#instrucció-SQL-SELECT)
 - [Instrucció SQL WHERE](#instrucció-SQL-WHERE)
 - [Instrucció SQL ORDER BY](#instrucció-SQL-ORDER-BY)
+- [SQL DATE FUNCTIONS](#SQL-DATE-FUNCTION)
 - [SQL AGGREGATE FUNCTIONS](#SQL-AGGREGATE-FUNCTIONS)
 
 <br>
