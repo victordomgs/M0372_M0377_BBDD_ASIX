@@ -6,7 +6,6 @@
 - [SQL AGGREGATE FUNCTIONS](#SQL-AGGREGATE-FUNCTIONS)
 
 <br>
----
 
 ## Instrucció SQL SELECT
 
