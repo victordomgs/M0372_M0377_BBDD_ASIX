@@ -3,7 +3,9 @@
 - [Instrucció SQL SELECT](#instrucció-SQL-SELECT)
 - [Instrucció SQL WHERE](#instrucció-SQL-WHERE)
 - [Instrucció SQL ORDER BY](#instrucció-SQL-ORDER-BY)
+- [SQL AGGREGATE FUNCTIONS](#SQL-AGGREGATE-FUNCTIONS)
 
+<br>
 ---
 
 ## Instrucció SQL SELECT
@@ -69,166 +71,6 @@ Obtindrem:
 | 205             | 20      | 75             | B1        |
 | 206             | 19      | 91             | C1        |
 | 207             | 20      | 80             | B2        |
-
-### Sintaxi de l'instrucció SELECT utilitzant la clàusula WHERE
-
-La clàusula **WHERE** s'utilitza amb la instrucció **SELECT** per retornar només aquelles files de la taula que compleixen la condició especificada a la consulta.
-
-En SQL, la clàusula **WHERE** no només s'utilitza amb la instrucció **SELECT**, sinó també amb altres instruccions com **UPDATE**, **ALTER** i **DELETE**.
-
-```sql
-SELECT * FROM Nom_de_Taula WHERE [condició];
-```
-En aquesta sintaxi, la condició es defineix a la clàusula WHERE mitjançant operadors lògics o de comparació d'SQL.
-
-#### Exemple de l'ús de SELECT utilitzant la clàusula WHERE 
-
-Imaginem que tenim la següent taula de dades: 
-
-```sql
-SELECT * FROM Employee_Details;
-```
-
-| **Employee_Id** | **Emp_Name** | **Emp_City**  | **Emp_Salary** | **Emp_Panelty** |
-|------------------|-------------|---------------|----------------|-----------------|
-| 101              | Anuj        | Ghaziabad     | 25000          | 500             |
-| 102              | Tushar      | Lucknow       | 29000          | 1000            |
-| 103              | Vivek       | Kolkata       | 35000          | 500             |
-| 104              | Shivam      | Goa           | 22000          | 500             |
-
-La següent consulta mostra els registres dels empleats de la taula anterior que tenen una penalització (**Emp_Panelty**) igual a 500:
-
-```sql
-SELECT * FROM Employee_Details WHERE Emp_Panelty = 500;
-```
-
-| **Employee_Id** | **Emp_Name** | **Emp_City**  | **Emp_Salary** | **Emp_Panelty** |
-|------------------|-------------|---------------|----------------|-----------------|
-| 101              | Anuj        | Ghaziabad     | 25000          | 500             |
-| 103              | Vivek       | Kolkata       | 35000          | 500             |
-| 104              | Shivam      | Goa           | 22000          | 500             |
-
-### Sintaxi de l'instrucció SELECT utilitzant la clàusula GROUP BY
-
-La clàusula **GROUP BY** s'utilitza amb la instrucció **SELECT** per agrupar les dades comunes d'una columna d'una taula. És especialment útil quan es combinen amb funcions agregades com `SUM`, `AVG`, `COUNT`, etc., per obtenir resums o estadístiques de grups de dades.
-
-```sql
-SELECT Nom_Columna_1, Nom_Columna_2, ..., Nom_Columna_N, funció_agregada(Nom_Columna2) 
-FROM Nom_Taula 
-GROUP BY Nom_Columna1;
-```
-
-#### Exemple de l'ús de SELECT utilitzant la clàusula GROUP BY
-
-Imaginem que tenim la següent taula de dades: 
-
-```sql
-SELECT * FROM Cars_Details; 
-```
-
-| **Car_Number** | **Car_Name** | **Car_Amount** | **Car_Price** |
-|----------------|--------------|----------------|---------------|
-| 2578          | Creta        | 3              | 1000000       |
-| 9258          | Audi         | 2              | 900000        |
-| 8233          | Venue        | 6              | 900000        |
-| 6214          | Nexon        | 7              | 1000000       |
-
-La següent consulta **SELECT** amb la clàusula **GROUP BY** llista el nombre de cotxes que tenen el mateix preu:
-
-```sql
-SELECT Car_Price , COUNT(Car_Name) 
-FROM Cars_Details 
-GROUP BY Car_Price;
-```
-
-| **Car_Price** | **COUNT(Car_Name)** |
-|----------------|--------------|
-| 1000000        | 2        | 
-| 900000         | 2       |
-
-### Sintaxi de l'instrucció SELECT utilitzant la clàusula HAVING
-
-La clàusula **HAVING** s'utilitza en una instrucció **SELECT** per aplicar condicions sobre els grups creats per la clàusula **GROUP BY**. A diferència de la clàusula **WHERE**, que filtra registres abans d'agrupació, **HAVING** permet filtrar els grups resultants.
-
-```sql
-SELECT Nom_Columna_1, Nom_Columna_2, ..., Nom_Columna_N, funció_agregada(Nom_Columna_2) 
-FROM Nom_Taula 
-GROUP BY Nom_Columna_1 
-HAVING [condició];
-```
-
-#### Exemple de l'ús de SELECT utilitzant la clàusula HAVING
-
-Imaginem que tenim la següent taula de dades: 
-
-```sql
-SELECT * FROM Employee_Having;
-```
-
-| **Employee_Id** | **Employee_Name** | **Employee_Salary** | **Employee_City** |
-|------------------|-------------------|----------------------|--------------------|
-| 201              | Jone             | 20000               | Goa                |
-| 202              | Basant           | 40000               | Delhi              |
-| 203              | Rashet           | 80000               | Jaipur             |
-| 204              | Anuj             | 20000               | Goa                |
-| 205              | Sumit            | 50000               | Delhi              |
-
-La següent consulta mostra el salari total dels empleats que tenen un salari superior a 50000, agrupats per ciutat:
-
-```sql
-SELECT Employee_City , SUM(Employee_Salary)
-FROM Employee_Having 
-GROUP BY Employee_City 
-HAVING SUM(Employee_Salary) > 50000;
-```
-|  **Employee_City** | **SUM(Employee_Salary)** |
-|---------------------------|--------------------|
-| Delhi                   |      90000         |
-| Jaipur                    |     80000        |
-
-### Sintaxi de l'instrucció SELECT utilitzant la clàusula ORDER BY
-
-La clàusula **ORDER BY** amb la instrucció **SQL SELECT** permet mostrar els registres o files de manera ordenada.
-
-La clàusula **ORDER BY** organitza els valors en ordre **ascendent** o **descendent**. En molts sistemes de bases de dades, els valors de la columna s'ordenen en ordre ascendent per defecte.
-
-```sql
-SELECT Column_Name_1, Column_Name_2, ....., column_Name_N
-FROM table_name
-WHERE [Condition]
-ORDER BY [column_Name_1, column_Name_2, ....., column_Name_N asc | desc ];  
-```
-
-#### Exemple de l'ús de SELECT utilitzant la clàusula ORDER BY
-
-Imaginem que tenim la següent taula de dades: 
-
-```sql
-SELECT * FROM Employee_Order;
-```
-
-| **Id** | **FirstName** | **Salary** | **City**  |
-|--------|---------------|------------|-----------|
-| 201    | Jone          | 20000      | Goa       |
-| 202    | Basant        | 15000      | Delhi     |
-| 203    | Rashet        | 80000      | Jaipur    |
-| 204    | Anuj          | 90000      | Goa       |
-| 205    | Sumit         | 50000      | Delhi     |
-
-La següent consulta ordena els salaris dels empleats en ordre descendent a partir de la taula `Employee_Order`:
-
-```sql
-SELECT * FROM Employee_Order 
-ORDER BY Emp_Salary DESC;
-```
-
-| **Emp_Id** | **Emp_Name** | **Emp_Salary** | **Emp_City** |
-|------------|--------------|----------------|--------------|
-| 204        | Anuj         | 90000          | Goa          |
-| 203        | Rashet       | 80000          | Jaipur       |
-| 205        | Sumit        | 50000          | Delhi        |
-| 201        | Jone         | 20000          | Goa          |
-| 202        | Basant       | 15000          | Delhi        |
 
 ### Sintaxi de la instrucció SELECT utilitzant la clàusula DISTINCT
 
@@ -583,3 +425,202 @@ Com a resultat obtenim:
 | 9   | Aakash Yadav       | 32  | Mumbai       | 43500  |
 | 3   | Ajeet Bhargav      | 45  | Meerut       | 65000  |
 | 10  | Sahil Sheikh       | 35  | Aurangabad   | 68800  |
+
+---
+
+## SQL DATE FUNCTIONS
+
+Les funcions de temps en SQL permeten treballar amb dates i hores. A continuació tenim alguns exemples de funcions de temps bastant utilitzades, tingues en compte, que existeixen moltes funcions de data i temps més.
+
+### CURRENT_DATE()
+
+Retorna la data actual del sistema (sense l'hora). 
+
+```sql
+SELECT CURRENT_DATE();
+```
+
+**Format de sortida**: `YYYY-MM-DD`
+
+### NOW()
+
+Retorna la data i hora actuals del sistema.
+
+```sql
+SELECT NOW();
+```
+
+**Format de sortida**: `YYYY-MM-DD HH:MM:SS`
+
+### DATE_ADD()
+
+Afegeix un interval de temps a una data determinada.
+
+**Sintaxi:**
+
+```sql
+DATE_ADD(data, INTERVAL valor tipus)
+```
+
+**Exemple:** Afegeix 10 dies a la data actual.
+
+```sql
+SELECT DATE_ADD(CURRENT_DATE(), INTERVAL 10 DAY);
+```
+
+**Resultat:** `2025-01-15` (tenint en compte que estem a dia 2025-01-05)
+
+### DATE_SUB()
+
+Resta un interval de temps d'una data determinada.
+
+**Sintaxi:**
+
+```sql
+DATE_SUB(data, INTERVAL valor tipus)
+```
+
+**Exemple:** Resta 2 mesos de la data actual.
+
+```sql
+SELECT DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH);
+```
+
+**Resultat:** `2024-11-05` (tenint en compte que estem a dia 2025-01-05)
+
+### Altres funcions de data
+
+- `DAY()`: Retorna el número del dia del mes de la data especificada.
+- `WEEK()`: Retorna el número de setmana de l'any de la data especificada.
+- `MONTH()`: Retorna el número del mes (1-12) de la data especificada.
+- `YEAR()`: Retorna l'any de la data especificada.
+
+**Exemples:**
+
+```sql
+SELECT DAY(CURRENT_DATE());
+```
+
+```sql
+SELECT WEEK(CURRENT_DATE());
+```
+
+```sql
+SELECT MONTH(CURRENT_DATE());
+```
+
+```sql
+SELECT YEAR(CURRENT_DATE());
+```
+
+---
+
+## SQL AGGREGATE FUNCTIONS
+
+Les funcions agregades són funcions que processen grups de files per retornar un únic valor. 
+
+- `COUNT()`: Retorna el nombre de files.
+- `SUM()`: Retorna la suma dels valors d'una columna.
+- `AVG()`: Retorna la mitjana dels valors d'una columna.
+- `MAX()`: Retorna el valor màxim d'una columna.
+- `MIN()`: Retorna el valor mínim d'una columna.
+
+> [!IMPORTANT]  
+> Es necessari utilitzar `GROUP BY` en les següents situacions:
+> - Comptar registres per grup.
+> - Filtrar resultats agrupats amb `HAVING`.
+> - Trobar màxim o mínim per grup.
+
+**Exemples d'ús de la clàusula `GROUP BY`**
+
+Taula `sales`:
+
+| ID  | CATEGORY    | AMOUNT |
+|-----|-------------|--------|
+| 1   | Electronics | 1000   |
+| 2   | Furniture   | 500    |
+| 3   | Electronics | 700    |
+| 4   | Furniture   | 400    |
+| 5   | Groceries   | 300    |
+| 6   | Electronics | 1200   |
+
+Si utilitzem una funció agregada sense `GROUP BY`, s'aplicarà a totes les files: 
+
+```sql
+SELECT SUM(AMOUNT) AS Total_Amount
+FROM sales;
+```
+
+Resultat: 
+
+| Total_Amount |
+|--------------|
+| 4100         |
+
+Amb `GROUP BY`:
+
+Si volem sumar `Amount` per categoria: 
+
+```sql
+SELECT CATEGORY, SUM(AMOUNT) AS Total_Amount
+FROM sales
+GROUP BY CATEGORY;
+```
+
+Resultat: 
+
+| CATEGORY    | Total_Amount |
+|-------------|--------------|
+| Electronics | 2900         |
+| Furniture   | 900          |
+| Groceries   | 300          |
+
+Aquí, `GROUP BY` agrupa les files per `Category`, i la funció agregada `SUM()` calcula la suma per a cada grup.
+
+Volem comptar els productes que hi ha a la taula `products` de cada categoria: 
+
+```sql
+SELECT CATEGORY, COUNT(*) AS Product_Count
+FROM sales
+GROUP BY CATEGORY;
+```
+
+Volem trobar categories on la suma total és superior a 100: 
+
+```sql
+SELECT CATEGORY, SUM(AMOUNT) AS Total_Amount
+FROM sales
+GROUP BY CATEGORY
+HAVING SUM(AMOUNT) > 1000;
+```
+
+Volem trobar la categoria amb la quantitat més alta de vendes: 
+
+```sql
+SELECT CATEGORY, MAX(AMOUNT) AS Max_Sale
+FROM sales
+GROUP BY CATEGORY;
+```
+
+**Exemples d'ús de la clàusula `HAVING`**
+
+La clàusula `HAVING` filtra els resultats després de l'agrupació.
+
+Imagina que, seguint amb la taula `sales` volem mostrar les categories amb una suma total superior a 500. 
+
+```sql
+SELECT CATEGORY, SUM(AMOUNT) AS Total_Amount
+FROM sales
+GROUP BY CATEGORY
+HAVING SUM(AMOUNT) > 500;
+```
+
+Obtindrem com a resultat: 
+
+| CATEGORY    | Total_Amount |
+|-------------|--------------|
+| Electronics | 2900         |
+| Furniture   | 900          |
+
+> [!IMPORTANT]  
+> `GROUP BY` s'ha de especificar sempre **abans** de `HAVING`.
