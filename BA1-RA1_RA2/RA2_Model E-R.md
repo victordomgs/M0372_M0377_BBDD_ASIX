@@ -152,7 +152,7 @@ Per exemple, en una empresa de construcció podrem identificar les següents ent
 A la Figura 12 es representa aquest exemple de generalització.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2012.%20Representaci%C3%B3%20d'una%20generalitzaci%C3%B3.png" alt="BD" width="850" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2012.%20Representaci%C3%B3%20d'una%20generalitzaci%C3%B3.png" alt="BD" width="550" height="auto"/>
     <p><em>Figura 12: Representació d'una generalització.</em></p>
   </div>
 
@@ -173,6 +173,6 @@ Per exemple, una empresa que porta la gestió de les factures:
 - LINIA_FACTURA, dentificador parcial: Num_linia. Altres atributs: producte, quantitat i preu.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2013.%20Relaci%C3%B3%20d%C3%A8bil.png" alt="BD" width="850" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2013.%20Relaci%C3%B3%20d%C3%A8bil.png" alt="BD" width="550" height="auto"/>
     <p><em>Figura 13: Entitat dèbil.</em></p>
   </div>
