@@ -135,3 +135,44 @@ S’han definit dues relacions:
     <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2011.%20Diagrama%20E-R%20de%20les%20relacions%20entre%20departaments%20i%20empleats.png" alt="BD" width="950" height="auto"/>
     <p><em>Figura 11: Diagrama E-R de les relacions entre departaments i empleats.</em></p>
   </div>
+
+### Generalització i jerarquies de generalització
+
+Les **generalitzacions** proporcionen un mecanisme d’abstracció que permet especialitzar una entitat (que s’anomenarà supertipus) en subtipus, o el que és el mateix, generalitzar els subtipus en el supertipus.
+Una generalització s’identifica si trobem una sèrie d’atributs comuns a un conjunt d’entitats, i uns atributs específics que identificaran unes característiques.
+Els atributs comuns descriuran el supertipus i els particulars els subtipus. Una de les característiques més importants de les jerarquies és l’herència, per la qual els atributs d’un supertipus són heretats pels seus subtipus. Si el supertipus participa en una relació, els subtipus també hi participaran.
+
+Per exemple, en una empresa de construcció podrem identificar les següents entitats:
+
+- EMPLEAT, amb els atributs N_EMPLE (clau primària), NOM, ADREÇA, DATA_NAIX, SOU i LLOC.
+- ARQUITECTE, amb els atributs d’empleat més els atributs específics: COMISSIONS i NUM_PROJECTES.
+- ADMINISTRATIU, amb els atributs d’empleat més els atributs específics: PULSACIONS i NIVELL.
+- ENGINYER, amb els atributs d’empleat més els atributs específics: ESPECIALITAT i ANYS_EXPERIÈNCIA.
+
+A la Figura 12 es representa aquest exemple de generalització.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2012.%20Representaci%C3%B3%20d'una%20generalitzaci%C3%B3.png" alt="BD" width="850" height="auto"/>
+    <p><em>Figura 12: Representació d'una generalització.</em></p>
+  </div>
+
+### Entitats dèbils
+
+Una **entitat dèbil** és una entitat dins d’un model de dades que **no té prou atributs propis per identificar-se de manera única**.
+A diferència de les **entitats fortes**, que disposen d’una **clau primària pròpia**, **les entitats dèbils necessiten de l’existència d’una altra entitat** (anomenada entitat forta o propietària) per poder identificar-se.
+
+Característiques principals:
+
+- **Dependència d’existència:** Una entitat dèbil no pot existir sense la seva entitat forta associada.
+- **Identificador parcial:** Les entitats dèbils tenen un atribut o conjunt d’atributs anomenats identificador parcial, que només les distingeix dins del context de l’entitat forta.
+- **Clau primària composta:** La clau primària de l’entitat forta (com a clau forana). El seu identificador parcial.
+
+Per exemple, una empresa que porta la gestió de les factures: 
+
+- FACTURA, entitat forta. Atributs: id_factura, client i data.
+- LINIA_FACTURA, dentificador parcial: Num_linia. Altres atributs: producte, quantitat i preu.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2013.%20Relaci%C3%B3%20d%C3%A8bil.png" alt="BD" width="850" height="auto"/>
+    <p><em>Figura 13: Entitat dèbil.</em></p>
+  </div>
