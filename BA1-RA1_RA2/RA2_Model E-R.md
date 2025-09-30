@@ -173,7 +173,7 @@ Per exemple, una empresa que porta la gestió de les factures:
 - LINIA_FACTURA, dentificador parcial: Num_linia. Altres atributs: producte, quantitat i preu.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2013.%20Relaci%C3%B3%20d%C3%A8bil.png" alt="BD" width="550" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2013.%20Relaci%C3%B3%20d%C3%A8bil.png" alt="BD" width="450" height="auto"/>
     <p><em>Figura 13: Entitat dèbil.</em></p>
   </div>
 
