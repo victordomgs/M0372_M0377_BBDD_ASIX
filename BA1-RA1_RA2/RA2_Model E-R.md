@@ -176,3 +176,19 @@ Per exemple, una empresa que porta la gestió de les factures:
     <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2013.%20Relaci%C3%B3%20d%C3%A8bil.png" alt="BD" width="550" height="auto"/>
     <p><em>Figura 13: Entitat dèbil.</em></p>
   </div>
+
+### Agregacions
+
+Una limitació del model E-R és que no és possible expressar relacions entre relacions. En aquests casos es realitza una agregació, que és una abstracció a través de la qual les relacions es tracten com a entitats de nivell més alt. Per exemple, considerem una relació entre EMPLEATS i PROJECTES, un empleat treballa en diversos projectes durant unes hores determinades i en aquest treball utilitza unes eines determinades. La representació del diagrama d’estructures es mostra a la Figura 14 següent:
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2014.%20Una%20relaci%C3%B3%20amb%20una%20altra%20relaci%C3%B3.png" alt="BD" width="550" height="auto"/>
+    <p><em>Figura 14: Una relació amb una altra relació.</em></p>
+  </div>
+
+Si considerem l’agregació, tenim que la relació TREBALL amb les entitats EMPLEAT i PROJECTE es pot representar com un conjunt d’entitats anomenades TREBALL, que es relacionen amb l’entitat EINES mitjançant la relació UTILITZA. Vegeu la Figura 15:
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2015.%20Conjunt%20d'entitats%20i%20relacions%20per%20representar%20una%20relaci%C3%B3%20entre%20una%20relaci%C3%B3.png" alt="BD" width="550" height="auto"/>
+    <p><em>Figura 15: Conjunt d'entitats i relacions per representar una relació entre una relació.</em></p>
+  </div>
