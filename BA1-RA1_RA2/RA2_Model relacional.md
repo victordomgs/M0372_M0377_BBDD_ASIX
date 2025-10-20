@@ -284,3 +284,44 @@ CREATE TABLE COMPRA(
     REFERENCES ARTICULOS (COD_ARTICULO)
     ON DELETE CASCADE ON UPDATE CASCADE);
 ```
+
+En la **transformació de relacions 1:N** existeixen dues solucions:
+
+- **Transformar la relació en una taula.** Es fa com si es tractés d’una relació N:M. Aquesta solució s’aplica quan es preveu que en un futur la relació es convertirà en N:M, o bé quan la relació té **atributs propis**. També es crea una nova taula quan la **cardinalitat és opcional**, és a dir, (0,1) i (0,M). La **clau** d’aquesta taula és la de l’entitat del costat “molts”.
+- **Propagar la clau.** Aquest cas s’aplica quan la **cardinalitat és obligatòria**, és a dir, quan tenim cardinalitats (1,1) i (0,M) o (1,M). Es **propaga l’atribut principal** de l’entitat que té cardinalitat màxima 1 cap a la que té cardinalitat màxima N, desapareixent el nom de la relació. Si existeixen **atributs propis** en la relació, aquests també es propagaran.
+
+#### Donat l’esquema que es mostra a la Figura 2.6, en què es representa la classificació dels llibres en temes, cal convertir l’esquema E-R en relacional.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2020.%20Esquema%20E-R%20TEMA-CLASIFICA-LIBRO.png" alt="SGBD" width="850" height="auto"/>
+    <p><em>Figura 20: Esquema E-R TEMA-CLASIFICA-LIBRO. Fuente: Sistemas gestores de bases de datos. (Ramos)</em></p>
+  </div>
+
+1. Es converteixen en taula les dues entitats:
+
+TEMAS (<u>COD_TEMA</u>, DESCRIPCIÓN)
+LIBROS (<u>COD_LIBRO</u>, AUTOR, ISBN, TÍTULO, NUM_EJEMPLARES)
+
+2. Es propaga la clau de l’entitat TEMAS a l’entitat LIBROS. L’entitat LIBROS queda així:
+
+LIBROS (<u>COD_LIBRO</u>, AUTOR, ISBN, TÍTULO, NUM_EJEMPLARES, <u>COD_TEMA (FK)</u>)
+
+En la **transformació de relacions 1:1** es tenen en compte les **cardinalitats** de les entitats que hi participen. Existeixen dues solucions:
+
+- **Transformar la relació en una taula.** Si les entitats tenen cardinalitats (0,1), la relació es converteix en una taula.
+- **Propagar la clau.** Si una de les entitats té cardinalitat (0,1) i l’altra (1,1), convé **propagar la clau** de l’entitat amb cardinalitat (1,1) a la taula resultant de l’entitat amb cardinalitat (0,1).
+Si totes dues entitats tenen cardinalitats (1,1), es pot propagar la clau de qualsevol d’elles a la taula resultant de l’altra. En aquest cas, també es poden **afegir els atributs** d’una entitat a l’altra, resultant una **única taula** amb tots els atributs de les entitats i de la relació (si n’hi hagués), escollint com a **clau primària** una de les dues.
+
+#### Considerem la relació EMPLEADO–OCUPA–PUESTOTRABAJO. Un empleat ocupa un sol lloc de treball, i aquest lloc de treball és ocupat per un sol empleat o per cap. L’esquema E-R es mostra a la Figura 2.8; cal transformar-lo al model relacional.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2021.%20Esquema%20E-R%20EMPLEADO-OCUPA-PUESTOTRABAJO.png" alt="SGBD" width="850" height="auto"/>
+    <p><em>Figura 21: Esquema E-R EMPLEADO-OCUPA-PUESTOTRABAJO. Fuente: Sistemas gestores de bases de datos. (Ramos)</em></p>
+  </div>
+
+En aquest cas, la clau es propaga des de l’entitat PUESTOTRABAJO, amb cardinalitat (1,1), cap a l’entitat EMPLEADO, amb cardinalitat (0,1).
+
+Les taules es representen així:
+
+PUESTOTRABAJO (COD_PUESTO, DESCRIPCIÓN, OFICINA, DESPACHO, MESA)
+EMPLEADO (COD_EMPLE, NOMBRE, DIRECCIÓN, TELEFONO, COD_PUESTO (FK))
