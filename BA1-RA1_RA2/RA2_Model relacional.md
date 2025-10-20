@@ -146,11 +146,13 @@ En l’esquema, els noms de les relacions apareixen seguits dels noms dels atrib
 
 L’esquema de la base de dades **d’empleats i departaments** és el següent:
 
-```
-TDEPART (<u>NUMDEPT</u>, NOMDEPT, PRESUPUESTO)
-TEMPLE (<u>NUMEMP</u>, APELLIDO, NUMDEP, SALARIO)
+
+TDEPART (**NUMDEPT**, NOMDEPT, PRESUPUESTO)
+
+TEMPLE (**NUMEMP**, APELLIDO, NUMDEP, SALARIO)
+
   TEMPLE --> TEDEPART: Departamento al que pertenece el empleado
-```
+
 
 ## Restriccions del model relacional
 
@@ -244,8 +246,9 @@ Un cop obtingut l’**esquema conceptual** mitjançant el **model E-R**, cal def
   
 1. Cada entitat es converteix en una taula, i els atributs de les entitats es converteixen en columnes de les taules. Ho representem així:
 
-CLIENTE (<u>COD_CLIEN</u>, NOMBRE, DIRECCIÓN, TELEFONO)
-ARTICULOS (<u>COD_ARTICULO</u>, PRECIO, STOCK, DENOMINACIÓN)
+CLIENTE (**COD_CLIEN**, NOMBRE, DIRECCIÓN, TELEFONO)
+
+ARTICULOS (**COD_ARTICULO**, PRECIO, STOCK, DENOMINACIÓN)
 
 
 2. La relació N:M es converteix en una taula. El nom que se li dóna és el de la relació, en aquest cas COMPRA. La clau primària estarà formada per la concatenació de les claus de les taules anteriors. Aquestes, al seu torn, passen a ser claus alienes i fan referència a les taules CLIENTE i ARTICULOS.
@@ -254,7 +257,7 @@ En aquesta relació, a més d’afegir les claus de les entitats anteriors, s’
 
 La taula queda així:
 
-COMPRA (<u>COD_CLIEN (FK)</u>, <u>COD_ARTICULO (FK)</u>, UNI_VEND, FECHA_VENTA)
+COMPRA (**COD_CLIEN (FK)**, **COD_ARTICULO (FK)**, UNI_VEND, FECHA_VENTA)
 
 Les opcions de supressió i de modificació solen ser en cascada. A continuació es mostra el codi que crearia aquestes tres taules:
 
@@ -299,12 +302,13 @@ En la **transformació de relacions 1:N** existeixen dues solucions:
 
 1. Es converteixen en taula les dues entitats:
 
-TEMAS (<u>COD_TEMA</u>, DESCRIPCIÓN)
-LIBROS (<u>COD_LIBRO</u>, AUTOR, ISBN, TÍTULO, NUM_EJEMPLARES)
+TEMAS (**COD_TEMA**, DESCRIPCIÓN)
+
+LIBROS (**COD_LIBRO**, AUTOR, ISBN, TÍTULO, NUM_EJEMPLARES)
 
 2. Es propaga la clau de l’entitat TEMAS a l’entitat LIBROS. L’entitat LIBROS queda així:
 
-LIBROS (<u>COD_LIBRO</u>, AUTOR, ISBN, TÍTULO, NUM_EJEMPLARES, <u>COD_TEMA (FK)</u>)
+LIBROS (**COD_LIBRO**, AUTOR, ISBN, TÍTULO, NUM_EJEMPLARES, **COD_TEMA (FK)**)
 
 En la **transformació de relacions 1:1** es tenen en compte les **cardinalitats** de les entitats que hi participen. Existeixen dues solucions:
 
@@ -323,5 +327,6 @@ En aquest cas, la clau es propaga des de l’entitat PUESTOTRABAJO, amb cardinal
 
 Les taules es representen així:
 
-PUESTOTRABAJO (COD_PUESTO, DESCRIPCIÓN, OFICINA, DESPACHO, MESA)
-EMPLEADO (COD_EMPLE, NOMBRE, DIRECCIÓN, TELEFONO, COD_PUESTO (FK))
+PUESTOTRABAJO (**COD_PUESTO**, DESCRIPCIÓN, OFICINA, DESPACHO, MESA)
+
+EMPLEADO (**COD_EMPLE**, NOMBRE, DIRECCIÓN, TELEFONO, **COD_PUESTO (FK)**)
