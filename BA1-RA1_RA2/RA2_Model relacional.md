@@ -63,7 +63,7 @@ Una relació té una sèrie d’elements característics que la distingeixen d�
 A la figura que es mostra a continuació es representa una relació anomenada **ALUMNE** en forma de taula.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2016.%20Representaci%C3%B3%20de%20una%20relaci%C3%B3%20en%20forma%20de%20taula.png" alt="SGBD" width="450" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2016.%20Representaci%C3%B3%20de%20una%20relaci%C3%B3%20en%20forma%20de%20taula.png" alt="SGBD" width="650" height="auto"/>
     <p><em>Figura 16: Representació d'una relació en forma de taula. Fuente: Sistemas gestores de bases de datos. (Ramos)</em></p>
   </div>
 
@@ -100,7 +100,7 @@ De les taules se’n deriven els conceptes següents:
 - **Valor nul.** Representa l’absència d’informació.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2017.%20Taula%20EMPLEAT%20amb%20dues%20files.png" alt="SGBD" width="450" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2017.%20Taula%20EMPLEAT%20amb%20dues%20files.png" alt="SGBD" width="650" height="auto"/>
     <p><em>Figura 17: Taula EMPLEADO amb dues files. Fuente: Sistemas gestores de bases de datos. (Ramos)</em></p>
   </div>
 
@@ -134,7 +134,7 @@ L’atribut NUMDEP és una clau aliena; relaciona les taules TEMPLE i TDEPART.
 La Figura 18 mostra el contingut de les taules TEMPLE i TDEPART amb les seves claus primàries i alienes.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2018.%20Taules%20TEMPLE%20i%20TDEPART%20amb%20les%20claus%20prim%C3%A0ries%20i%20foranas.png" alt="SGBD" width="650" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2018.%20Taules%20TEMPLE%20i%20TDEPART%20amb%20les%20claus%20prim%C3%A0ries%20i%20foranas.png" alt="SGBD" width="850" height="auto"/>
     <p><em>Figura 18: Taula TEMPLE i TDEPART amb les claus primàries i foranes. Fuente: Sistemas gestores de bases de datos. (Ramos)</em></p>
   </div>
 
@@ -238,7 +238,7 @@ Un cop obtingut l’**esquema conceptual** mitjançant el **model E-R**, cal def
 #### Donat l’esquema que es mostra a la Figura 2.4, en què es representen les compres d’articles que fan els clients, cal convertir l’esquema E-R en relacional.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2019.%20Esquema%20E-R%20CLIENTE-COMPRA-ARTICULOS.png" alt="SGBD" width="650" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2019.%20Esquema%20E-R%20CLIENTE-COMPRA-ARTICULOS.png" alt="SGBD" width="850" height="auto"/>
     <p><em>Figura 19: Esquema E-R CLIENTE-COMPRA-ARTICULOS. Fuente: Sistemas gestores de bases de datos. (Ramos)</em></p>
   </div>
   
