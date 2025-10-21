@@ -6,11 +6,15 @@
 - [Restriccions del model relacional](#restriccions-del-model-relacional)
 - [Transformació d'un esquema E-R a un esquema relacional](#transformació-dun-esquema-ER-a-un-esquema-relacional)
 
+<br>
+
 ## Introducció
 
 Ja s’ha vist a la unitat anterior què és un sistema gestor de bases de dades i quins són els seus objectius. També es va veure l’arquitectura ANSI per a la seva aplicació en la creació de les bases de dades. S’han estudiat diferents models conceptuals de dades, però no s’ha arribat a realitzar cap disseny lògic.
 Aquesta unitat tracta del que actualment és el principal model per a les aplicacions de processament de dades: el model relacional, que presenta una forma molt simple i potent de representar les dades.
 Al llarg de la unitat s’exposen els fonaments del model de dades relacional i la seva aplicació per al disseny lògic de dades i de bases de dades relacionals.
+
+<br>
 
 ## El model relacional
 
@@ -50,6 +54,8 @@ El model relacional proposa una representació de la informació que:
 - Sigui fàcilment entesa pels usuaris.
 - Permeti ampliar l’esquema de la base de dades sense modificar l’estructura lògica existent ni els programes d’aplicació.
 - Permeti la màxima flexibilitat en la formulació de les consultes sobre la informació mantinguda a la base de dades.
+
+<br>
 
 ## Estructura del model relacional
 
@@ -153,6 +159,7 @@ TEMPLE (**NUMEMP**, APELLIDO, NUMDEP, SALARIO)
 
   TEMPLE --> TEDEPART: Departamento al que pertenece el empleado
 
+<br>
 
 ## Restriccions del model relacional
 
@@ -227,6 +234,8 @@ BEGIN
   END IF;
 END;
 ```
+
+<br>
 
 ## Transformació d'un esquema E-R a un esquema relacional
 
@@ -330,3 +339,45 @@ Les taules es representen així:
 PUESTOTRABAJO (**COD_PUESTO**, DESCRIPCIÓN, OFICINA, DESPACHO, MESA)
 
 EMPLEADO (**COD_EMPLE**, NOMBRE, DIRECCIÓN, TELEFONO, **COD_PUESTO (FK)**)
+
+### A. Transformació d’altres elements del model E-R
+
+#### Relacions reflexives o recursives
+
+Són **relacions binàries** en què participa un mateix tipus d’entitat. En el procés de convertir una relació reflexiva en una taula, cal tenir molt en compte la **cardinalitat**. Normalment, tota relació reflexiva es converteix en **dues taules**: una per a l’entitat i una altra per a la relació. Es poden presentar els casos següents:
+
+- Si la relació és **1:1**, la **clau de l’entitat es repeteix**, de manera que la taula resultant tindrà dues vegades aquest atribut: una com a **clau primària** i una altra com a **clau aliena** d’ella mateixa. No es crea una segona taula.
+
+- Si la relació és **1:M**, es poden donar dos casos:
+- 
+a) Si l’entitat del costat “molts” és **sempre obligatòria**, es procedeix igual que en el cas **1:1**.
+
+b) Si **no és obligatòria**, es crea una **nova taula**, la clau de la qual serà la de l’entitat del costat “molts”, i a més es **propaga la clau** a la nova taula com a **clau aliena**.
+
+#### Considerem la relació EMPLEADO–DIRIGE–EMPLEADO. Un empleat pot dirigir molts empleats o cap si és el que dirigeix. I un empleat és dirigit per un director o per cap si ell és el que dirigeix. En aquest cas no hi ha obligatorietat en l’entitat “molts”. L’esquema E-R es mostra a la Figura 22; cal transformar-lo al model relacional.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2022.%20Esquema%20E-R%20de%20EMPLEADO-DIRIGE-EMPLEADO.png" alt="SGBD" width="850" height="auto"/>
+    <p><em>Figura 22: Esquema E-R EMPLEADO-DIRIGE-EMPLEADO. Fuente: Sistemas gestores de bases de datos. (Ramos)</em></p>
+  </div>
+  
+La taula **DIRIGE** té com a **clau primària** el codi d’empleat, que alhora serà **clau aliena**. A més, s’hi afegeix el codi d’empleat que, en aquest cas, tindrà el paper de **director**, i que també serà **clau aliena** de la taula **EMPLEADO**.
+
+EMPLEADO (**COD_EMPLE**, DIRECCIÓN, TELÉFONO, NOMBRE)
+DIRIGE (**COD_EMPLE (FK)**, **COD_DIREC (FK)**)
+
+- Si és **N:M**, es tracta igual que en les **relacions binàries**. La taula resultant de la relació contindrà **dues vegades la clau primària** de l’entitat del costat “molts”, a més dels **atributs de la relació**, si n’hi hagués. La **clau d’aquesta nova taula** serà la **combinació de totes dues claus**.
+
+#### Considerem la relació PIEZA–COMPONE–PIEZA, en què una peça es compon de moltes peces, que al seu torn estan compostes per altres peces. L’esquema E-R es mostra a la Figura 23; cal transformar-lo al model relacional.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA1-RA1_RA2/images/Figura%2023.%20Esquema%20E-R%20de%20PIEZA-COMPONE-PIEZA.png" alt="SGBD" width="850" height="auto"/>
+    <p><em>Figura 23: Esquema E-R PIEZA-COMPONE-PIEZA. Fuente: Sistemas gestores de bases de datos. (Ramos)</em></p>
+  </div>
+  
+En aquest cas, s’obté una segona taula **COMPONE_PIEZA**, en la qual apareix repetit el codi de peça i forma la **clau** de la taula. L’atribut **COD_PIEZ_COM** representa la peça que es compon d’altres, i **COD_PIEZA** té el paper de peça que compon altres peces. Tots dos atributs són **claus alienes** a la taula **PIEZA**.
+
+La representació queda així:
+
+PIEZA (**COD_PIEZA**, DESCRIPCIÓN, TAMAÑO, COLOR)
+COMPONE_PIEZA (**COD_PIEZ_COM (FK)**, **COD_PIEZA (FK)**)
