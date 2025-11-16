@@ -498,20 +498,56 @@ SELECT DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH);
 
 **Exemples:**
 
-```sql
-SELECT DAY(CURRENT_DATE());
-```
+**Filtrar dates més grans o més petites que una data concreta**
+
+Podem fer servir les funcions `YEAR()`, `MONTH()` i `DAY()` quan necessitem comparar només una part de la data.
+
+**Totes les dates posteriors a l'any 2023:**
 
 ```sql
-SELECT WEEK(CURRENT_DATE());
+SELECT *
+FROM taula
+WHERE YEAR(data) > 2023;
 ```
 
-```sql
-SELECT MONTH(CURRENT_DATE());
-```
+**Totes les dates anteriors al mes de juny independentment de l’any:**
 
 ```sql
-SELECT YEAR(CURRENT_DATE());
+SELECT *
+FROM taula
+WHERE MONTH(data) < 6;
+```
+
+**Registres on el dia del mes sigui superior a 15:**
+
+```sql
+SELECT *
+FROM taula
+WHERE DAY(data) > 15;
+```
+
+**Registres entre 2024 i 2025:**
+
+```sql
+SELECT *
+FROM taula
+WHERE YEAR(data) BETWEEN 2024 AND 2025;
+```
+
+**Registres del primer trimestre (gener–març) de qualsevol any:**
+
+```sql
+SELECT *
+FROM taula
+WHERE MONTH(data) BETWEEN 1 AND 3;
+```
+
+**Registres entre els dies 10 i 20 de qualsevol mes:**
+
+```sql
+SELECT *
+FROM taula
+WHERE DAY(data) BETWEEN 10 AND 20;
 ```
 
 <br>
