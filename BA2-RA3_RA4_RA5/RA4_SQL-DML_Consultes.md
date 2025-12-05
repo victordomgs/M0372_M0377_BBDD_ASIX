@@ -856,8 +856,6 @@ FROM taula1
 WHERE columna2 = (SELECT columnaX FROM taula2 WHERE condició);
 ```
 
----
-
 ### Tipus de subconsultes
 
 #### Subconsultes simples
