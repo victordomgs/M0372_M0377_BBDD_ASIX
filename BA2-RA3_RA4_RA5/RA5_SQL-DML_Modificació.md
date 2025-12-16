@@ -1,12 +1,128 @@
 # Continguts
 
+- [Transaccions en SQL](#transaccions-en-SQL)
 - [Instrucció SQL INSERT](#instrucció-SQL-INSERT)
 - [Inserir dades amb SELECT](#inserir-dades-amb-SELECT)
 - [Inserir dades amb claus autogenerades](#inserir-dades-amb-claus-autogenerades)
-- [SQL DATE FUNCTIONS](#SQL-DATE-FUNCTIONS)
-- [SQL AGGREGATE FUNCTIONS](#SQL-AGGREGATE-FUNCTIONS)
+- [Instrucció SQL UPDATE](#instrucció-SQL-UPDATE)
+- [Instrucció SQL DELETE](#instrucció-SQL-DELETE)
 - [SQL JOINS](#SQL-JOINS)
-- [SUBCONSULTES](#SUBCONSULTES)
+
+<br>
+
+## Transaccions en SQL
+
+### Què és una transacció?
+
+Una **transacció** és una unitat d'execució de treball en una base de dades que es tracta com una única operació lògica. Les transaccions garanteixen que un conjunt d'operacions en la base de dades es realitzin de manera completa i consistent.
+
+Les transaccions segueixen les propietats **ACID**:
+
+1. **Atomicitat**: Una transacció es realitza completament o no es realitza en absolut.
+2. **Consistència**: La base de dades ha d'estar en un estat consistent abans i després de la transacció.
+3. **Aïllament**: Les operacions de diferents transaccions no interfereixen entre elles.
+4. **Durabilitat**: Els canvis realitzats per una transacció confirmada es conserven fins i tot en cas de fallades del sistema.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/Bases-de-Dades/blob/main/images/acid.png" alt="ACID" width="480" height="auto"/><p><em>Figura 1: ACID. Fuente: Gravitar.biz</em></p>
+  </div>
+
+### Inici i finalització de transaccions
+
+Les transaccions en SQL es poden gestionar amb els següents comandos:
+
+#### Iniciar una transacció
+```sql
+START TRANSACTION;
+```
+Aquest comando indica l'inici d'una transacció.
+
+#### Confirmar una transacció
+```sql
+COMMIT;
+```
+Aquest comando confirma la transacció i fa permanents els canvis a la base de dades.
+
+#### Desfer una transacció
+```sql
+ROLLBACK;
+```
+Aquest comando desfà tots els canvis realitzats des de l'inici de la transacció.
+
+### Exemples pràctics
+
+#### Exemple 1: Transacció senzilla
+```sql
+START TRANSACTION;
+
+UPDATE comptes SET saldo = saldo - 100 WHERE id = 1;
+UPDATE comptes SET saldo = saldo + 100 WHERE id = 2;
+
+COMMIT;
+```
+En aquest exemple, es transfereixen 100 unitats del compte 1 al compte 2. La transacció es confirma amb `COMMIT`.
+
+#### Exemple 2: Desfer canvis
+```sql
+START TRANSACTION;
+
+UPDATE productes SET estoc = estoc - 10 WHERE id = 5;
+
+ROLLBACK;
+```
+Aquest exemple desfà l'actualització de l'estoc del producte amb id 5.
+
+### Control de transaccions automàtiques
+
+#### Mode autocommit
+Molts sistemes de bases de dades utilitzen el mode **autocommit** per defecte. Això significa que cada instrucció SQL es tracta com una transacció independent.
+
+Per desactivar l'autocommit:
+```sql
+SET autocommit = 0;
+```
+Per activar-lo de nou:
+```sql
+SET autocommit = 1;
+```
+
+### Punts de recuperació
+
+SQL permet establir **punts de recuperació** (savepoints) dins d'una transacció per tal de desfer només una part dels canvis:
+
+#### Crear un punt de recuperació
+```sql
+SAVEPOINT punt1;
+```
+
+#### Tornar a un punt de recuperació
+```sql
+ROLLBACK TO punt1;
+```
+
+#### Eliminar un punt de recuperació
+```sql
+RELEASE SAVEPOINT punt1;
+```
+
+### Errors comuns
+
+- **Oblidar el `COMMIT`:** Si no es confirma una transacció, els canvis no es reflectiran a la base de dades.
+- **Conflictes d'aïllament:** Pot ocórrer quan dues transaccions intenten modificar les mateixes dades simultàniament. Això es pot gestionar amb diferents nivells d'aïllament.
+
+### Nivells d'aïllament
+
+SQL ofereix diferents nivells d'aïllament per controlar el comportament de les transaccions en entorns amb concurrència:
+
+1. **Read Uncommitted:** Permet llegir dades no confirmades.
+2. **Read Committed:** Només permet llegir dades confirmades.
+3. **Repeatable Read:** Garanteix que les dades llegides no canviaran durant la transacció.
+4. **Serializable:** El nivell més alt d'aïllament; garanteix que les transaccions es processen seqüencialment.
+
+Configurar el nivell d'aïllament:
+```sql
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+```
 
 <br>
 
@@ -377,3 +493,191 @@ VALUES ('Eva', 3);
 
 - El valor de `id` es genera automàticament com un UUID.
 
+<br>
+
+## Instrucció SQL UPDATE
+
+La sentència `UPDATE` s'utilitza per modificar els registres existents en una taula d'una base de dades. Amb aquesta instrucció, podem canviar el valor d'una o més columnes en una o diverses files que compleixin una condició determinada.
+
+### Sintaxi bàsica
+
+```sql
+UPDATE nom_taula
+SET columna1 = valor1, columna2 = valor2, ...
+WHERE condició;
+```
+
+#### Explicació dels elements:
+- **`nom_taula`**: Nom de la taula que volem modificar.
+- **`SET`**: Clausula que indica les columnes i els nous valors que volem assignar.
+- **`columna1 = valor1`**: Assigna un nou valor a una columna especificada.
+- **`WHERE`**: Opcional, especifica una condició per determinar quines files seran actualitzades. Si no s'especifica, totes les files seran modificades.
+
+### Exemple senzill
+
+Suposem que tenim una taula anomenada `Empleats` amb la següent estructura:
+
+| ID  | Nom         | Departament | Sou  |
+|------|-------------|-------------|-------|
+| 1    | Anna        | Vendes      | 3000  |
+| 2    | Joan        | IT          | 3500  |
+| 3    | Maria       | Vendes      | 2800  |
+
+#### Actualitzar el sou d'un empleat
+Si volem augmentar el sou de Joan a 4000, farem:
+
+```sql
+UPDATE Empleats
+SET Sou = 4000
+WHERE Nom = 'Joan';
+```
+
+Resultat:
+
+| ID  | Nom         | Departament | Sou  |
+|------|-------------|-------------|-------|
+| 1    | Anna        | Vendes      | 3000  |
+| 2    | Joan        | IT          | 4000  |
+| 3    | Maria       | Vendes      | 2800  |
+
+#### Actualitzar diverses columnes
+També podem modificar més d'una columna alhora. Per exemple, canviem el departament de Maria a `IT` i augmentem el seu sou a 3200:
+
+```sql
+UPDATE Empleats
+SET Departament = 'IT', Sou = 3200
+WHERE Nom = 'Maria';
+```
+
+Resultat:
+
+| ID  | Nom         | Departament | Sou  |
+|------|-------------|-------------|-------|
+| 1    | Anna        | Vendes      | 3000  |
+| 2    | Joan        | IT          | 4000  |
+| 3    | Maria       | IT          | 3200  |
+
+### Actualitzacions massives
+Si no s'utilitza la clausula `WHERE`, totes les files de la taula seran modificades. Per exemple:
+
+```sql
+UPDATE Empleats
+SET Departament = 'General';
+```
+
+Resultat:
+
+| ID  | Nom         | Departament | Sou  |
+|------|-------------|-------------|-------|
+| 1    | Anna        | General     | 3000  |
+| 2    | Joan        | General     | 4000  |
+| 3    | Maria       | General     | 3200  |
+
+> [!IMPORTANT]  
+> **Usar sempre la clausula `WHERE` amb cura**: Sense una condició específica, es poden modificar totes les files de la taula, provocant resultats inesperats.
+> 
+> **Provar amb una consulta `SELECT` primer**: Executar una consulta `SELECT` amb la mateixa condició que el `WHERE` per verificar quines files seran afectades.
+
+### Exemple amb subconsulta
+També es poden utilitzar subconsultes per calcular els valors a assignar. Suposem que volem augmentar el sou de tots els empleats al mateix nivell que el sou més alt de la taula:
+
+```sql
+UPDATE Empleats
+SET Sou = (SELECT MAX(Sou) FROM Empleats);
+```
+
+Resultat:
+
+| ID  | Nom         | Departament | Sou  |
+|------|-------------|-------------|-------|
+| 1    | Anna        | General     | 4000  |
+| 2    | Joan        | General     | 4000  |
+| 3    | Maria       | General     | 4000  |
+
+<br>
+
+## Instrucció SQL DELETE
+
+La sentència `DELETE` s'utilitza per eliminar registres d'una taula en una base de dades. Aquesta operació es realitza basant-se en una condició especificada amb la clausula `WHERE`. Sense aquesta condició, tots els registres de la taula seran eliminats.
+
+### Sintaxi bàsica
+
+```sql
+DELETE FROM nom_taula
+WHERE condició;
+```
+
+#### Explicació dels elements:
+- **`nom_taula`**: Nom de la taula d'on es volen eliminar els registres.
+- **`WHERE`**: Clausula opcional que especifica quins registres s'eliminaran. Si no s'inclou, s'eliminaran tots els registres de la taula.
+
+### Exemple senzill
+
+Suposem que tenim una taula anomenada `Empleats` amb la següent estructura:
+
+| ID  | Nom         | Departament | Sou  |
+|------|-------------|-------------|-------|
+| 1    | Anna        | Vendes      | 3000  |
+| 2    | Joan        | IT          | 3500  |
+| 3    | Maria       | Vendes      | 2800  |
+
+#### Eliminar un registre específic
+Per eliminar l'empleat amb nom "Maria":
+
+```sql
+DELETE FROM Empleats
+WHERE Nom = 'Maria';
+```
+
+Resultat:
+
+| ID  | Nom         | Departament | Sou  |
+|------|-------------|-------------|-------|
+| 1    | Anna        | Vendes      | 3000  |
+| 2    | Joan        | IT          | 3500  |
+
+#### Eliminar registres basats en una condició
+Si volem eliminar tots els empleats del departament de `Vendes`:
+
+```sql
+DELETE FROM Empleats
+WHERE Departament = 'Vendes';
+```
+
+Resultat:
+
+| ID  | Nom         | Departament | Sou  |
+|------|-------------|-------------|-------|
+| 2    | Joan        | IT          | 3500  |
+
+### Eliminar tots els registres
+Si volem buidar completament la taula, ho podem fer ometent la clausula `WHERE`. Això eliminarà totes les files:
+
+```sql
+DELETE FROM Empleats;
+```
+
+Després d'executar aquesta sentència, la taula quedarà buida:
+
+| ID  | Nom         | Departament | Sou  |
+|------|-------------|-------------|-------|
+|      |             |             |       |
+
+### Recomanacions importants
+
+> [!IMPORTANT]  
+> **Utilitza sempre la clausula `WHERE` amb cura**: Si no especifiques una condició, tots els registres de la taula seran eliminats.
+> 
+> **Prova amb una consulta `SELECT` prèvia**: Utilitza una consulta `SELECT` amb la mateixa condició per assegurar-te que eliminaràs els registres correctes.
+> 
+> **Coneix la diferència amb `TRUNCATE`**: La sentència `TRUNCATE` també elimina tots els registres d'una taula, però és més ràpida i no permet especificar condicions. També reinicia els valors autoincrementats.
+
+### Exemple amb subconsulta
+També podem utilitzar subconsultes dins d'una sentència `DELETE`. Suposem que volem eliminar tots els empleats amb un sou inferior al sou mitjà de la taula:
+
+```sql
+DELETE FROM Empleats
+WHERE Sou < (SELECT AVG(Sou) FROM Empleats);
+```
+
+Aquesta sentència eliminarà els empleats que tenen un sou inferior a la mitjana.
