@@ -3,6 +3,9 @@
 - [Creació de bases de dades](#creació-de-bases-de-dades)
 - [Creació de taules](#creació-de-taules)
 - [Restriccions de columnes](#restriccions-de-columnes)
+- [Restriccions de clau forana](#restriccions-de-clau-forana)
+- [Modificació de taules](#modificació-de-taules)
+- [Creació de vistes](#creació-de-vistes)
 
 <br>
 
