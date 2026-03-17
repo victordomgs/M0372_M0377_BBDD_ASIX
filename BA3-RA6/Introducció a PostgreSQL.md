@@ -92,16 +92,16 @@ psql "host=asixpostgres.postgres.database.azure.com port=5432 dbname=postgres us
 
 Posem la contrasenya i ja estaríem connectats.
 
-2. **Llistar bases de dades:** Visualitzem totes les bases de dades existents al servidor.
+2. **Llistar esquemes:** Visualitzem tots els esquemes dintre de la base de dades que tenim seleccionada.
 
 ```Bash
-psql -l
+\dn+
 ```
 
-3. **Connexió a una BD:** Accedim de forma interactiva a una base de dades específica (ex: hotel).
+3. **Provar una consulta:**
 
 ```Bash
-psql -d hotel
+SELECT * FROM COLECCIO;
 ```
 
 ### Comandes essencials de psql
