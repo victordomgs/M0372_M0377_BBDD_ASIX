@@ -5,7 +5,7 @@ PostgreSQL és un sistema de gestió de bases de dades relacionals potent i de c
 
 
 
-## L'usuaari Administrador (postgres)
+## L'usuari Administrador (postgres)
 
 - **Accés Inicial:** Quan s'instal·la per primera vegada, només l'usuari postgres pot connectar-se.
 - **Seguretat:** Aquest usuari existeix tant a PostgreSQL com al sistema operatiu i, per defecte, no té contrasenya.
