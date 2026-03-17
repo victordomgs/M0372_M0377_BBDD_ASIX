@@ -80,7 +80,7 @@ Previ a seguir el flux de treball, necessitarem connectar-nos al servidor. Podem
     <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%209.png" width="650" height="auto"/>
   </div>
 
-En el meu cas, el host seria: asixpostgres.postgres.database.azure.com
+En el meu cas, el host seria: `asixpostgres.postgres.database.azure.com`
 
 ### Flux de treball bàsic
 
