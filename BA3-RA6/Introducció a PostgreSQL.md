@@ -68,24 +68,23 @@ PostgreSQL és un **sistema de gestió de bases de dades relacionals potent i de
     <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%208.png" width="650" height="auto"/>
   </div>
 
-
-## L'usuari Administrador (postgres)
-
-- **Accés Inicial:** Quan s'instal·la per primera vegada, només l'usuari postgres pot connectar-se.
-- **Seguretat:** Aquest usuari existeix tant a PostgreSQL com al sistema operatiu i, per defecte, no té contrasenya.
-- **Validació:** Per accedir-hi, primer cal ser l'administrador (root o via sudo) del sistema operatiu.
-- **Restricció Local:** L'usuari postgres només es pot utilitzar des de la mateixa màquina on s'executa el servidor.
-
-> [!NOTE]
-> En determinats entorns (com màquines Vagrant de desenvolupament), pot existir un usuari anomenat admin amb permisos per a connexions remotes.
+<br>
 
 ## El client psql
 
-`psql` és la interfície de línia de comandes per interactuar amb PostgreSQL.
+`psql` és la interfície de línia de comandes per interactuar amb PostgreSQL que hem de tenir instal·lada al nostre ordinador.
+
+Previ a seguir el flux de treball, necessitarem connectar-nos al servidor. Podem trobar la informació a  **Información general** al panell del servei. 
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%209.png" width="650" height="auto"/>
+  </div>
+
+En el meu cas, el host seria: asixpostgres.postgres.database.azure.com
 
 ### Flux de treball bàsic
 
-1. **Canvi d'usuari:** Accedim al terminal com a usuari postgres.
+1. **El comando per connectar-te**
 
 ```Bash
 sudo su - postgres
