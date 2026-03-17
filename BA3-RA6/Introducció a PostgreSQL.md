@@ -1,27 +1,15 @@
 # Introducció a PostgreSQL
 PostgreSQL és un sistema de gestió de bases de dades relacionals potent i de codi obert. A continuació es detallen els primers passos per a la seva instal·lació i ús bàsic mitjançant el client psql.
 
-## Instal·lació en Debian
+## Instal·lació a Azure
 
-Per instal·lar PostgreSQL en sistemes basats en Debian, utilitzarem el gestor de paquets apt:
 
-```Bash
-# Actualitzem els repositoris
-sudo apt-get update
-
-# Instal·lem el servidor i el client
-sudo apt-get install postgresql
-Usuari Administrador (postgres)
-```
 
 ## L'usuaari Administrador (postgres)
 
 - **Accés Inicial:** Quan s'instal·la per primera vegada, només l'usuari postgres pot connectar-se.
-
 - **Seguretat:** Aquest usuari existeix tant a PostgreSQL com al sistema operatiu i, per defecte, no té contrasenya.
-
 - **Validació:** Per accedir-hi, primer cal ser l'administrador (root o via sudo) del sistema operatiu.
-
 - **Restricció Local:** L'usuari postgres només es pot utilitzar des de la mateixa màquina on s'executa el servidor.
 
 [!NOTE]
@@ -79,4 +67,4 @@ A diferència de les sentències SQL, les ordres de gestió de `psql` comencen a
 | `\dn+` | Mostra els esquemes i els seus privilegis definits |
 
 > [!TIP]
-> Pots utilitzar comodins per filtrar la cerca. Per exemple, `\dt *.*` mostra totes les taules de tots els esquemes [cite: 42][cite_start], i `\d esquema.taula` detalla una taula en un esquema concret.
+> Pots utilitzar comodins per filtrar la cerca. Per exemple, `\dt *.*` mostra totes les taules de tots els esquemes , i `\d esquema.taula` detalla una taula en un esquema concret.
