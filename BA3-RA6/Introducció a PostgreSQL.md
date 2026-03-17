@@ -1,5 +1,5 @@
 # Introducció a PostgreSQL
-PostgreSQL és un sistema de gestió de bases de dades relacionals potent i de codi obert. A continuació es detallen els primers passos per a la seva instal·lació i ús bàsic mitjançant el client psql.
+PostgreSQL és un **sistema de gestió de bases de dades relacionals potent i de codi obert**. A continuació es detallen els primers passos per a la seva instal·lació i ús bàsic mitjançant el client psql.
 
 ## Instal·lació a Azure
 
