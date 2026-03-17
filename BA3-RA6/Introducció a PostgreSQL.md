@@ -106,7 +106,7 @@ SELECT * FROM COLECCIO;
 
 ### Comandes essencials de psql
 
-## 1.5. Ordres essencials del client `psql`
+## Ordres essencials del client `psql`
 
 A diferència de les sentències SQL, les ordres de gestió de `psql` comencen amb barra invertida (`\`) i no requereixen punt i coma al final.
 
