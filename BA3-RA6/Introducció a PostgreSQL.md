@@ -12,8 +12,8 @@ PostgreSQL és un sistema de gestió de bases de dades relacionals potent i de c
 - **Validació:** Per accedir-hi, primer cal ser l'administrador (root o via sudo) del sistema operatiu.
 - **Restricció Local:** L'usuari postgres només es pot utilitzar des de la mateixa màquina on s'executa el servidor.
 
-[!NOTE]
-En determinats entorns (com màquines Vagrant de desenvolupament), pot existir un usuari anomenat admin amb permisos per a connexions remotes.
+> [!NOTE]
+> En determinats entorns (com màquines Vagrant de desenvolupament), pot existir un usuari anomenat admin amb permisos per a connexions remotes.
 
 ## El client psql
 
