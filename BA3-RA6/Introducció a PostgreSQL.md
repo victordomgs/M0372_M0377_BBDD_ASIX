@@ -87,8 +87,10 @@ En el meu cas, el host seria: `asixpostgres.postgres.database.azure.com`
 1. **El comando per connectar-te**
 
 ```Bash
-sudo su - postgres
+psql "host=asixpostgres.postgres.database.azure.com port=5432 dbname=postgres user=victor sslmode=require"
 ```
+
+Posem la contrasenya i ja estaríem connectats.
 
 2. **Llistar bases de dades:** Visualitzem totes les bases de dades existents al servidor.
 
