@@ -3,7 +3,11 @@ PostgreSQL és un sistema de gestió de bases de dades relacionals potent i de c
 
 ## Instal·lació a Azure
 
+1. A la barra superior de cerca escriu "PostgreSQL" i selecciona l'opció anomenada: **Servidores flexibles de Azure Database for PostgreSQL**
 
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%201.png" width="650" height="auto"/>
+  </div>
 
 ## L'usuari Administrador (postgres)
 
