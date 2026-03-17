@@ -11,7 +11,7 @@ sudo apt-get update
 
 # Instal·lem el servidor i el client
 sudo apt-get install postgresql
-L'usuari Administrador (postgres)
+Usuari Administrador (postgres)
 ```
 
 ## L'usuaari Administrador (postgres)
