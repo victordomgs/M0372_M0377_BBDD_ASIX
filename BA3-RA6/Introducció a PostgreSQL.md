@@ -55,26 +55,28 @@ psql -d hotel
 
 ## 1.5. Ordres essencials del client `psql`
 
-[cite_start]A diferència de les sentències SQL, les ordres de gestió de `psql` comencen amb barra invertida (`\`) i no requereixen punt i coma al final[cite: 38].
+A diferència de les sentències SQL, les ordres de gestió de `psql` comencen amb barra invertida (`\`) i no requereixen punt i coma al final.
 
 ### Gestió i Navegació
+
 | Ordre | Descripció | Equivalent MySQL |
 | :--- | :--- | :--- |
-| `\l` | [cite_start]Llista totes les bases de dades del servidor [cite: 38] | `SHOW DATABASES` |
-| `\c <DB>` | [cite_start]Connecta a una base de dades específica [cite: 38] | `USE <DB>` |
-| `\i <fitxer>` | [cite_start]Executa un script SQL des d'un fitxer [cite: 38] | `SOURCE <fitxer>` |
-| `\q` | [cite_start]Surt de l'entorn `psql` [cite: 38] | `EXIT` |
-| `\x` | [cite_start]Activa/desactiva la visualització estesa de columnes [cite: 38] | `\G` |
+| `\l` | Llista totes les bases de dades del servidor | `SHOW DATABASES` |
+| `\c <DB>` | Connecta a una base de dades específica | `USE <DB>` |
+| `\i <fitxer>` | Executa un script SQL des d'un fitxer | `SOURCE <fitxer>` |
+| `\q` | Surt de l'entorn `psql` | `EXIT` |
+| `\x` | Activa/desactiva la visualització estesa de columnes | `\G` |
 
 ### Inspecció d'Estructura i Privilegis
+
 | Ordre | Descripció |
 | :--- | :--- |
-| `\d` | [cite_start]Mostra totes les taules, vistes i seqüències [cite: 38] |
-| `\d <taula>` | [cite_start]Mostra l'estructura detallada d'una taula [cite: 38] |
-| `\dt` | [cite_start]Mostra només les taules de la base de dades [cite: 39] |
-| `\du` | [cite_start]Llista els rols (usuaris) i els seus privilegis globals [cite: 39] |
-| `\dp` | [cite_start]Mostra els privilegis d'accés detallats dels objectes [cite: 39] |
-| `\dn+` | [cite_start]Mostra els esquemes i els seus privilegis definits [cite: 39] |
+| `\d` | Mostra totes les taules, vistes i seqüències |
+| `\d <taula>` | Mostra l'estructura detallada d'una taula |
+| `\dt` | Mostra només les taules de la base de dades |
+| `\du` | Llista els rols (usuaris) i els seus privilegis globals |
+| `\dp` | Mostra els privilegis d'accés detallats dels objectes |
+| `\dn+` | Mostra els esquemes i els seus privilegis definits |
 
 > [!TIP]
-> Pots utilitzar comodins per filtrar la cerca. [cite_start]Per exemple, `\dt *.*` mostra totes les taules de tots els esquemes [cite: 42][cite_start], i `\d esquema.taula` detalla una taula en un esquema concret[cite: 43].
+> Pots utilitzar comodins per filtrar la cerca. Per exemple, `\dt *.*` mostra totes les taules de tots els esquemes [cite: 42][cite_start], i `\d esquema.taula` detalla una taula en un esquema concret.
