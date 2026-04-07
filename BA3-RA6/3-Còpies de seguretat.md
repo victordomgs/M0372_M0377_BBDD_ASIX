@@ -39,14 +39,30 @@ L'arquitectura d'Azure està dissenyada per garantir que les dades estiguin semp
 - **Protecció:** Protegeix contra fallades de disc o d'un servidor concret.
 - **Limitació:** Si el centre de dades sencer té un problema (per exemple, un incendi), les dades es podrien perdre.
 
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2010.png" width="550" height="auto"/>
+  </div>
+
 ### 2. Redundància de Zona (ZRS)
 
 - **Com funciona:** Les dades es repliquen de forma sincrònica en tres Zones de Disponibilitat diferents dins de la mateixa regió.
 - **Què és una Zona?:** Cada zona és un centre de dades independent amb la seva pròpia alimentació, refrigeració i xarxa.
 - **Protecció:** Si un centre de dades sencer cau, el servei continua funcionant des de les altres zones sense interrupció.
 
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2013.png" width="550" height="auto"/>
+  </div>
+
 ### 3. Redundància Geogràfica (GRS / GZRS)
 
 - **Com funciona:** A més de la redundància local o de zona, les dades es copien de forma asincrònica a una **regió secundària** situada a centenars de quilòmetres de distància.
 - **Protecció:** És la protecció màxima contra desastres regionals totals.
 - **Restauració Geogràfica:** Permet recuperar la base de dades en una regió diferent si la regió principal queda totalment inoperativa.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2011.png" width="550" height="auto"/>
+  </div>
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2012.png" width="550" height="auto"/>
+  </div>
