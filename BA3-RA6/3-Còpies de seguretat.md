@@ -29,42 +29,68 @@ El servei ofereix diferents solucions segons la gravetat del problema:
 
 <br>
 
-## Alta Disponibilitat i Redundància a Azure
+## Còpies de seguretat automatitzades a Azure SQL Database
 
-L'arquitectura d'Azure està dissenyada per garantir que les dades estiguin sempre disponibles, fins i tot quan es fan tasques de manteniment o hi ha errors de maquinari. Per aconseguir-ho, s'utilitzen diferents nivells de **redundància**:
+### Què és una còpia de seguretat de base de dades?
 
-### 1. Redundància Local (LRS)
+Les còpies de seguretat de base de dades són una part essencial de qualsevol estratègia de **continuïtat empresarial i recuperació davant desastres**, ja que ajuden a protegir les dades de danys o eliminacions. Aquestes còpies de seguretat permeten la restauració de la base de dades a un **moment donat** (conegut com a Point-in-Time Restore) dins del període de retenció configurat.
 
-- **Com funciona:** És el nivell bàsic. Es fan tres còpies de les dades dins d'un mateix centre de dades (una única ubicació física).
-- **Protecció:** Protegeix contra fallades de disc o d'un servidor concret.
-- **Limitació:** Si el centre de dades sencer té un problema (per exemple, un incendi), les dades es podrien perdre.
+Si les regles de protecció de dades de l'empresa exigeixen que les còpies de seguretat estiguin disponibles durant un temps prolongat (fins a **10 anys**), es pot configurar la **retenció a llarg termini (LTR)** tant per a bases de dades úniques com per a grups de bases de dades.
+
+### Freqüència de les còpies de seguretat
+
+L'Azure SQL Database crea:
+
+#### Còpies de seguretat completes
+
+Una còpia de seguretat completa de la base de dades crea una còpia de tot el conjunt de dades. Això inclou la part del registre de transaccions per poder recuperar la base de dades completa després de restaurar una còpia de seguretat completa. Les còpies de seguretat completes representen l'estat de la base de dades en el moment en què ha finalitzat la còpia. Trobem dos tipologies de còpies de seguretat completas: 
+
+**1. Model de recuperació simple:** Amb el model de recuperació simple, després de cada còpia de seguretat, la base de dades queda exposada a la pèrdua potencial de la feina realitzada en cas de desastre. El risc de pèrdua de dades augmenta amb cada actualització fins que es realitza la següent còpia de seguretat; en aquell moment, el risc de pèrdua torna a zero i comença un nou cicle de risc. Com més temps passa entre una còpia de seguretat i la següent, més gran és el risc de pèrdua de la feina. La següent il·lustració mostra el risc de pèrdua de dades en una estratègia que només utilitza còpies de seguretat completes de la base de dades.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2010.png" width="250" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura14.gif" width="450" height="auto"/>
   </div>
 
-### 2. Redundància de Zona (ZRS)
-
-- **Com funciona:** Les dades es repliquen de forma sincrònica en tres Zones de Disponibilitat diferents dins de la mateixa regió.
-- **Què és una Zona?:** Cada zona és un centre de dades independent amb la seva pròpia alimentació, refrigeració i xarxa.
-- **Protecció:** Si un centre de dades sencer cau, el servei continua funcionant des de les altres zones sense interrupció.
+**2. Model de recuperació completa:** En les bases de dades que utilitzen la recuperació completa i optimitzada per a càrregues massives de registres, les còpies de seguretat de la base de dades són necessàries però no suficients. També es requereixen còpies de seguretat dels registres de transaccions.
+La freqüència exacta de les còpies del registre de transaccions depèn de la mida del procés i de la quantitat d'activitat que tingui la base de dades. Quan es restaura una base de dades, el mateix servei determina quina còpia completa, diferencial o del registre de transaccions és necessari recuperar. La següent il·lustració mostra l'estratègia de còpia de seguretat menys complexa en un model de recuperació completa.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2013.png" width="450" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura15.gif" width="450" height="auto"/>
   </div>
 
-### 3. Redundància Geogràfica (GRS / GZRS)
+#### Còpies de seguretat diferencials
 
-- **Com funciona:** A més de la redundància local o de zona, les dades es copien de forma asincrònica a una **regió secundària** situada a centenars de quilòmetres de distància.
-- **Protecció:** És la protecció màxima contra desastres regionals totals.
-- **Restauració Geogràfica:** Permet recuperar la base de dades en una regió diferent si la regió principal queda totalment inoperativa.
+La còpia de seguretat diferencial es basa en la còpia de seguretat de dades completa anterior més recent. Una còpia diferencial captura només les dades que han canviat després de l'última còpia completa. La còpia de seguretat completa en la qual es basa una diferencial s'anomena base de la diferencial.
 
-#### GRS
+La següent il·lustració mostra com funciona una còpia de seguretat diferencial:
+
+- Abast de la còpia: Si tenim, per exemple, 24 extensions de dades i només 6 han canviat, la còpia diferencial contindrà exclusivament aquestes sis extensions.
+- Mecanisme tècnic: L'operació de còpia de seguretat diferencial es basa en una pàgina de mapa de bits que conté un bit per cada extensió.
+- Detecció de canvis: Per cada extensió que s'ha actualitzat des que es va crear la base, el bit s'estableix en 1 en el mapa de bits, indicant al sistema que aquesta dada ha d' ser inclosa en la següent diferencial.
+
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2011.png" width="650" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura17.png" width="450" height="auto"/>
   </div>
 
-#### GZRS
+#### Còpies de seguretat de registres de transaccions (només SQL Server)
+
+Un administrador de bases de dades normalment crea una còpia de seguretat completa de la base de dades, per exemple, setmanalment; si ho desitja, també pot crear una sèrie de còpies de seguretat diferencials de la base de dades a intervals més curts, per exemple, diàriament. Amb independència de les còpies de seguretat de la base de dades, l'administrador de la base de dades fa còpies de seguretat del registre de transaccions cada poc temps. En el cas d'un tipus de còpia de seguretat concret, l'interval òptim dependrà de diversos factors, com ara la importància de les dades, la mida de la base de dades i la càrrega de treball del servidor.
+
+### Redundància de l'emmagatzematge de les còpies
+
+El mecanisme de redundància guarda diverses còpies de les dades per protegir-les de fallades de maquinari, talls de llum o desastres naturals.
+
+#### Punts clau per configurar a Azure:
+
+- **Configuració per defecte:** Les noves bases de dades utilitzen redundància geogràfica (GRS), replicant les dades en una regió secundària per permetre la restauració si la regió principal cau.
+- **Entorns de treball:** desenvolupament: S’estableix per defecte la **redundància local (LRS)** per reduir costos, sent ideal per a entorns de proves. Producció: S’estableix per defecte la **redundància geogràfica (GRS)** per a màxima seguretat.Flexibilitat: Es pot canviar la redundància en qualsevol moment (de geogràfica a local o de zona) per garantir que les dades no surtin d'una regió específica.
+- **Aplicació dels canvis:** Si modifiques la redundància d'una base de dades ja existent, el canvi només afectarà les còpies futures i pot trigar fins a 48 hores a aplicar-se.
+- **Àmbit:** La configuració escollida s'aplica tant a les còpies de retenció a curt termini (STR) com a les de llarg termini (LTR).
+
+Azure permet escollir entre: 
+
+- **Emmagatzematge amb redundància local (LRS):** copia les còpies de seguretat de forma sincrònica tres vegades dins d'una única ubicació física a la regió primària. L'LRS és l'opció d'emmagatzematge menys costosa, però no es recomana per a aplicacions que requereixin resistència a interrupcions regionals o una garantia d'alta durabilitat de les dades.
+
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2012.png" width="650" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura20.svg" width="450" height="auto"/>
   </div>
