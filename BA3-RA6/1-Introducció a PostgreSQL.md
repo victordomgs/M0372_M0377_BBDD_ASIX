@@ -103,33 +103,3 @@ Posem la contrasenya i ja estaríem connectats.
 ```Bash
 SELECT * FROM COLECCIO;
 ```
-
-### Comandes essencials de psql
-
-## Ordres essencials del client `psql`
-
-A diferència de les sentències SQL, les ordres de gestió de `psql` comencen amb barra invertida (`\`) i no requereixen punt i coma al final.
-
-### Gestió i Navegació
-
-| Ordre | Descripció | Equivalent MySQL |
-| :--- | :--- | :--- |
-| `\l` | Llista totes les bases de dades del servidor | `SHOW DATABASES` |
-| `\c <DB>` | Connecta a una base de dades específica | `USE <DB>` |
-| `\i <fitxer>` | Executa un script SQL des d'un fitxer | `SOURCE <fitxer>` |
-| `\q` | Surt de l'entorn `psql` | `EXIT` |
-| `\x` | Activa/desactiva la visualització estesa de columnes | `\G` |
-
-### Inspecció d'Estructura i Privilegis
-
-| Ordre | Descripció |
-| :--- | :--- |
-| `\d` | Mostra totes les taules, vistes i seqüències |
-| `\d <taula>` | Mostra l'estructura detallada d'una taula |
-| `\dt` | Mostra només les taules de la base de dades |
-| `\du` | Llista els rols (usuaris) i els seus privilegis globals |
-| `\dp` | Mostra els privilegis d'accés detallats dels objectes |
-| `\dn+` | Mostra els esquemes i els seus privilegis definits |
-
-> [!TIP]
-> Pots utilitzar comodins per filtrar la cerca. Per exemple, `\dt *.*` mostra totes les taules de tots els esquemes , i `\d esquema.taula` detalla una taula en un esquema concret.
