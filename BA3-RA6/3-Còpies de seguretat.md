@@ -92,5 +92,5 @@ Azure permet escollir entre:
 - **Emmagatzematge amb redundància local (LRS):** copia les còpies de seguretat de forma sincrònica tres vegades dins d'una única ubicació física a la regió primària. L'LRS és l'opció d'emmagatzematge menys costosa, però no es recomana per a aplicacions que requereixin resistència a interrupcions regionals o una garantia d'alta durabilitat de les dades.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura20.svg" width="450" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura20.svg" width="600" height="auto"/>
   </div>
