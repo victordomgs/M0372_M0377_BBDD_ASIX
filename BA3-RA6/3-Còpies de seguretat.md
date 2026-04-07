@@ -40,7 +40,7 @@ L'arquitectura d'Azure està dissenyada per garantir que les dades estiguin semp
 - **Limitació:** Si el centre de dades sencer té un problema (per exemple, un incendi), les dades es podrien perdre.
 
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2010.png" width="550" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2010.png" width="350" height="auto"/>
   </div>
 
 ### 2. Redundància de Zona (ZRS)
@@ -59,10 +59,12 @@ L'arquitectura d'Azure està dissenyada per garantir que les dades estiguin semp
 - **Protecció:** És la protecció màxima contra desastres regionals totals.
 - **Restauració Geogràfica:** Permet recuperar la base de dades en una regió diferent si la regió principal queda totalment inoperativa.
 
+#### GRS
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2011.png" width="550" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2011.png" width="650" height="auto"/>
   </div>
 
+#### GZRS
   <div style="text-align: center;">
-    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2012.png" width="550" height="auto"/>
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura%2012.png" width="650" height="auto"/>
   </div>
