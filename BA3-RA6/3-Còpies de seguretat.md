@@ -94,3 +94,29 @@ Azure permet escollir entre:
   <div style="text-align: center;">
     <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura20.svg" width="600" height="auto"/>
   </div>
+
+- **Emmagatzematge amb redundància de zona (ZRS):** copia les còpies de seguretat de forma sincrònica en tres zones de disponibilitat d'Azure a la regió primària. Actualment, només està disponible en determinades regions.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura21.svg" width="600" height="auto"/>
+  </div>
+
+- **Emmagatzematge amb redundància geogràfica (GRS):** copia les còpies de seguretat de forma sincrònica tres vegades dins d'una única ubicació física a la regió primària mitjançant LRS. A continuació, copia les dades de forma asincrònica tres vegades en una sola ubicació física a la regió secundària aparellada.
+
+El resultat és el següent:
+- Tres còpies sincròniques a la regió primària.
+- Tres còpies sincròniques a la regió aparellada que s'han copiat de la regió primària a la regió secundària de forma asincrònica.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura22.svg" width="600" height="auto"/>
+  </div>
+
+- **Emmagatzematge amb redundància de zona geogràfica (GZRS):** combina l'alta disponibilitat que proporciona la redundància entre zones de disponibilitat (ZRS) amb la protecció davant d'interrupcions regionals que ofereix la replicació geogràfica (GRS).
+
+El procés funciona de la següent manera:
+- A la regió primària: es realitza una còpia de seguretat de forma sincrònica en tres zones de disponibilitat d'Azure.
+- A la regió secundària aparellada: les dades es copien de forma asincrònica tres vegades en una sola ubicació física.Aquesta opció es recomana per a aplicacions que requereixen la màxima coherència, durabilitat i disponibilitat, juntament amb una gran resistència per a la recuperació davant desastres.
+
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura23.png" width="600" height="auto"/>
+  </div>
