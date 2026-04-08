@@ -122,3 +122,6 @@ El procés funciona de la següent manera:
   <div style="text-align: center;">
     <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/BA3-RA6/images/Captura23.png" width="600" height="auto"/>
   </div>
+
+> [!NOTE]  
+> La còpia de seguretat síncrona garanteix zero pèrdua de dades (RPO=0) en escriure en temps real tant al lloc principal com al de rèplica, però pot causar latència. La asíncrona s'escriu primer al principal i després es replica, oferint millor rendiment però risc de pèrdua mínima de dades si hi ha un fallada.
