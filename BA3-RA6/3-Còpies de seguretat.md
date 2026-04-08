@@ -16,7 +16,9 @@ Per entendre com Azure protegeix les dades, hem de conèixer dos indicadors fona
 Azure SQL Database està dissenyat per protegir-nos davant de diversos tipus d'incidències:
 
 **1. Errors humans o malintencionats:** Com l'eliminació accidental de files, taules o, fins i tot, de tota la base de dades.
+
 **2. Fallades d'infraestructura:** Problemes en el maquinari, la xarxa o el subministrament elèctric del centre de dades.
+
 **3. Desastres a gran escala:** Incidències que afecten tota una regió geogràfica (com desastres naturals).
 
 ### Eines de Recuperació a Azure
