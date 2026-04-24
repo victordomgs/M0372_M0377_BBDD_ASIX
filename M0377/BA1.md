@@ -23,7 +23,7 @@ CREATE VIEW AlbumInfo AS
 
 Aquesta vista conté el títol de l'àlbum, el nom de l'artista, i una llista amb el nom de les cançons incloses.
 
-> [NOTE]
+> [!NOTE]
 > La funció _GROUP_CONCAT()_ uneix tots els valors d'una columna que s'han unit per causa d'un _GROUP BY_ en una única cadena de text.
 
 Podem fer consultes sobre aquesta vista:
@@ -81,5 +81,5 @@ Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 ```
 
-> [WARNING]
+> [!WARNING]
 > El canvi que s'ha fet potser no era el que esperàvem: s'ha modificat el nom del gènere Rock i se li ha dit Blues, no s'ha modificat el `GenreId` del tema.
