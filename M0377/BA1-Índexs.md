@@ -274,7 +274,7 @@ Aquest és un concepte que els alumnes veuran al fer `SHOW INDEX`.
 
 Els índexs no són estructures estàtiques. A mesura que la taula rep operacions de `INSERT`, `UPDATE` i `DELETE`, l'estructura interna del B-Tree es pot desordenar i degradar.
 
-### 7.1. Què és la fragmentació?
+### Què és la fragmentació?
 Quan esborrem files o actualitzem dades, queden "buits" o espais buits dins de les pàgines de l'índex al disc. 
 * **Fragmentació interna:** Les pàgines de l'índex estan mig buides, ocupant més espai del necessari.
 * **Fragmentació externa:** Les pàgines de l'índex no estan en ordre físic seqüencial, el que obliga al disc dur a fer més moviments per llegir-les.
