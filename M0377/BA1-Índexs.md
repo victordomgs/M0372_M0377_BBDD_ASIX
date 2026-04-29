@@ -1,7 +1,7 @@
 # Continguts
 
 - [Introducció als índexs](#introducció-als-índexs)
-- [Tipus d'índexs segons la seva funció](#tipus-d-índexs-segons-la-seva-funció)
+- [Tipus d'índexs segons la seva funció](#tipus-díndexs-segons-la-seva-funció)
 - [Arquitectura interna: Clustered vs Secondary](#arquitectura-interna-clustered-vs-secondary)
 - [Estratègies d'indexació (Simples i Compostos)](#estratègies-d-indexació-simples-i-compostos)
 - [Implementació en SQL (Sintaxi)](#implementació-en-sql-sintaxi)
