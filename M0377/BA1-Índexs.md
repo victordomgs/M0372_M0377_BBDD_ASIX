@@ -3,7 +3,7 @@
 - [Introducció als índexs](#introducció-als-índexs)
 - [Tipus d'índexs segons la seva funció](#tipus-díndexs-segons-la-seva-funció)
 - [Arquitectura interna: Clustered vs Secondary](#arquitectura-interna-clustered-vs-secondary)
-- [Estratègies d'indexació (Simples i Compostos)](#estratègies-d-indexació-simples-i-compostos)
+- [Estratègies d'indexació (Simples i Compostos)](#estratègies-dindexació-simples-i-compostos)
 - [Implementació en SQL (Sintaxi)](#implementació-en-sql-sintaxi)
 - [Diagnosi amb EXPLAIN i optimització](#diagnosi-amb-explain-i-optimització)
 - [Manteniment i fragmentació](#manteniment-i-fragmentació)
