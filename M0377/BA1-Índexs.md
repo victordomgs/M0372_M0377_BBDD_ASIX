@@ -106,7 +106,7 @@ Qualsevol índex que no sigui el Clustered Index (és a dir, qualsevol `INDEX` o
     2. Troba que "Garcia" té la PK número `50`.
     3. Llavors va a l'índex agrupat (Clustered) a buscar la PK `50` per treure tota la resta de dades (nom, telèfon, adreça). Aquest segon pas s'anomena **Bookmark Lookup**.
 
-### 3.3. L'estructura en B-Tree (Arbre B)
+### L'estructura en B-Tree (Arbre B)
 Tant els índexs agrupats com els secundaris utilitzen una estructura d'arbre balancejat anomenada **B-Tree**.
 
 * **Cerca logarítmica:** En lloc de llegir `N` files, MySQL pot trobar qualsevol dada en un grapat de salts (normalment de 3 a 4 nivells, fins i tot en taules de milions de registres).
