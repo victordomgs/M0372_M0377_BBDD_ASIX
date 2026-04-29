@@ -235,13 +235,10 @@ EXPLAIN SELECT * FROM usuaris WHERE cognom = 'Garcia';
 
 - **type:** Indica com es busquen les dades.
 
-ALL: Mal senyal. Significa Full Table Scan (llegeix tota la taula).
-
-index: Llegeix tot l'índex (millor que ALL, però no ideal).
-
-range: Molt bé. Busca en un rang de l'índex.
-
-ref o const: Excel·lent. Troba les dades directament per l'índex.
+1. `ALL`: Mal senyal. Significa Full Table Scan (llegeix tota la taula).
+2. `index`: Llegeix tot l'índex (millor que ALL, però no ideal).
+3. `range`: Molt bé. Busca en un rang de l'índex.
+4. `ref o const`: Excel·lent. Troba les dades directament per l'índex.
 
 - **possible_keys:** Llista d'índexs que MySQL podria fer servir.
 
