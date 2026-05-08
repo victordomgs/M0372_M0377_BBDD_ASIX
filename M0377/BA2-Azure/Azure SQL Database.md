@@ -8,7 +8,7 @@ En aquesta primera fase, creareu una base de dades única a Azure SQL Database m
 - Treballarem amb l'Azure Portal. Opcionalment, utilitzeu la versió més recent d'Azure PowerShell o de la CLI d'Azure.
 
 #### Permisos
-**Per crear bases de dades a través de Transact-SQL:** es necessiten permisos de CREATE DATABASE. Per crear una base de dades, l'inici de sessió ha de correspondre a l'administrador del servidor (creat en aprovisionar el servidor lògic d'Azure SQL Database), a l'administrador de Microsoft Entra del servidor, o a un membre del rol de base de dades dbmanager a master.
+**Per crear bases de dades a través de Transact-SQL:** es necessiten permisos de CREATE DATABASE. Per crear una base de dades, l'inici de sessió ha de correspondre a l'administrador del servidor (creat en aprovisionar el servidor lògic d'Azure SQL Database).
 
 **Per crear bases de dades a través del portal d'Azure, PowerShell, la CLI d'Azure o l'API REST**: es necessiten permisos de RBAC d'Azure, específicament el rol de Col·laborador, el rol de Col·laborador de base de dades SQL o el rol de Col·laborador de SQL Server.
 
