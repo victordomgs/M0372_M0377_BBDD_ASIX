@@ -98,3 +98,6 @@ L'Azure Portal proporciona una opció **d'entorn de càrrega de treball** que aj
   </div>
 
 11. A la pàgina de revisió, un cop verificat tot, seleccioneu **Crear**.
+
+<br>
+
