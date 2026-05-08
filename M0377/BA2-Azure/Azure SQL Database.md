@@ -24,66 +24,77 @@ Per crear una base de dades única a l’Azure Portal:
 
 3. Seleccioneu el botó desplegable **+ Crear** i seleccioneu **BASE de dades SQL**.
 
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/M0377/BA2-Azure/images/Figura%201.png" width="650" height="auto"/>
+  </div>
+  
 4. A la pestanya **Bàsic** del formulari **Create SQL Database**, a **Detalls del projecte**, seleccioneu la **subscripció** d’Azure correcta.
 
 5. A **Grup de recursos**, seleccioneu **Crear nou**, escriviu `miGrupoDeRecursos` i seleccioneu **Aceptar**.
 
-A Nom de la base de dades, escriviu laMevaBaseDeDadesDeExemple.
+6. A Nom de la base de dades, escriviu `miBaseDeDatosDeEjemplo`.
 
-A Servidor, seleccioneu Crear nou i ompliu el formulari Nou servidor amb els valors següents:
+7. A **Servidor**, seleccioneu **Crear nuevo** i ompliu el formulari **Nuevo servidor** amb els valors següents:
 
-Nom del servidor: Escriviu elMeuServidorSql i afegiu alguns caràcters perquè el nom sigui únic. No es pot proporcionar un nom de servidor exacte perquè els noms dels servidors han de ser globalment únics per a tots els servidors d’Azure, no només dins d’una subscripció. L'Azure Portal us indicarà si el nom que escriviu està disponible o no.
+- **Nom del servidor:** Escriviu elMeuServidorSql i afegiu alguns caràcters perquè el nom sigui únic. No es pot proporcionar un nom de servidor exacte perquè els noms dels servidors han de ser globalment únics per a tots els servidors d’Azure, no només dins d’una subscripció. L'Azure Portal us indicarà si el nom que escriviu està disponible o no.
+- **Ubicació:** Seleccioneu una ubicació a la llista desplegable.
+- **Mètode d'autenticació:** seleccioneu Ús de l'autenticació de SQL.
+- **Inici de sessió de l'administrador del servidor:** escriviu usuariazure.
+- **Contrasenya:** escriviu una contrasenya que compleixi els requisits i torneu-la a escriure al camp Confirmar contrasenya.
 
-Ubicació: Seleccioneu una ubicació a la llista desplegable.
+>[!IMPORTANT]
+> No inclogueu cap informació personal, sensible o confidencial al camp de nom d'inici de sessió de l'administrador del servidor. Les dades especificades en aquest camp no es consideren dades del client.
 
-Mètode d'autenticació: seleccioneu Ús de l'autenticació de SQL.
+8. Seleccioneu **Aceptar**.
+Important: 
 
-Inici de sessió de l'administrador del servidor: escriviu usuariazure.
+9. Deixeu **¿Quiere usar un grupo elástico de SQL?** establert en **No**.
 
-Contrasenya: escriviu una contrasenya que compleixi els requisits i torneu-la a escriure al camp Confirmar contrasenya.
+10. A **Entorno de carga de trabajo**, especifiqueu **Desarrollo** per a aquest exercici.
 
-Important: No inclogueu cap informació personal, sensible o confidencial al camp de nom d'inici de sessió de l'administrador del servidor. Les dades especificades en aquest camp no es consideren dades del client.
+L'Azure Portal proporciona una opció **d'entorn de càrrega de treball** que ajuda a establir prèviament algunes opcions de configuració. Aquests paràmetres es poden anul·lar. Aquesta opció només s'aplica a la **pàgina de Crear portal de SQL Database**. Altrament, l'opció **d'entorn de càrrega de treball** no afecta les llicències ni altres opcions de configuració de la base de dades.
 
-Seleccioneu D’acord.
+- L'elecció de l'entorn de **desarrollo** estableix algunes opcions, com ara:
+- La **Redundancia del almacenamiento de copia de seguridad** és emmagatzematge amb redundància local (LRS). Té un cost menor i és adequat per a entorns de preproducció.
+- **Compute + storage** és d'ús general, sense servidor (serverless) amb un únic nucli virtual (vCore). Per defecte, hi ha un retard de pausa automàtica d'una hora.
+- Triar l'entorn de **Producción** estableix:
+- Per defecte, redundància d'emmagatzematge geogràfic.
+- **Compute + storage** d'ús general, aprovisionat amb 2 vCores i 32 GB d'emmagatzematge.
 
-Deixeu Voleu utilitzar un grup elàstic de SQL? establert en No.
+1. A **Proceso y almacenamiento**, seleccioneu **Configurar base de datos**.
 
-A Entorn de càrrega de treball, especifiqueu Desenvolupament per a aquest exercici.
+2. En aquest inici ràpid s'utilitza una base de dades sense servidor, així que deixeu el **nivel de servicio** establert en **De uso general (proceso económico y sin servidor)** i establiu el **Nivel de proceso** en **Sin servidor**. Seleccioneu **Aplicar**.
 
-L'Azure Portal proporciona una opció d'entorn de càrrega de treball que ajuda a establir prèviament algunes opcions de configuració. Aquests paràmetres es poden anul·lar. Aquesta opció només s'aplica a la pàgina de creació del portal de SQL Database. Altrament, l'opció d'entorn de càrrega de treball no afecta les llicències ni altres opcions de configuració de la base de dades.
+3. A **Redundancia del almacenamiento de copia de seguridad**, trieu una opció de redundància per al compte on es desaran les còpies.
 
-L'elecció de l'entorn de desenvolupament estableix algunes opcions, com ara:
+4. Seleccioneu **Siguiente: Redes**.
 
-La redundància de l'emmagatzematge de còpia de seguretat és emmagatzematge amb redundància local (LRS). Té un cost menor i és adequat per a entorns de preproducció.
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/M0377/BA2-Azure/images/Figura%202.png" width="650" height="auto"/>
+  </div>
 
-Compute + storage és d'ús general, sense servidor (serverless) amb un únic nucli virtual (vCore). Per defecte, hi ha un retard de pausa automàtica d'una hora.
+5. A la pestanya **Redes**, a **Métode de conectividad**, seleccioneu **Punto de conexión público**.
 
-Triar l'entorn de Producció estableix:
+6. A **Reglas de firewall**, establiu **Agregar dirección IP del cliente actual** en **Sí**. Deixeu l'opció **Permitir que los servicios y recursos de Azure accedan a este grupo de servidores** en **No**.
 
-Per defecte, redundància d'emmagatzematge geogràfic.
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/M0377/BA2-Azure/images/Figura%203.png" width="650" height="auto"/>
+  </div>
 
-Compute + storage d'ús general, aprovisionat amb 2 vCores i 32 GB d'emmagatzematge.
+7. A **Directiva de conexión**, trieu la Directiva per defecte i deixeu la **Versión mínima de TLS** al valor 1.2.
 
-A Computació i emmagatzematge, seleccioneu Configurar base de dades.
+8. Seleccioneu **Siguiente: Seguridad**.
 
-En aquest inici ràpid s'utilitza una base de dades sense servidor, així que deixeu el nivell de servei establert en D'ús general (computació econòmica i sense servidor) i establiu el Nivell de computació en Sense servidor (serverless). Seleccioneu Aplica.
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/M0377/BA2-Azure/images/Figura%204.png" width="650" height="auto"/>
+  </div>
 
-A Redundància de l'emmagatzematge de còpia de seguretat, trieu una opció de redundància per al compte on es desaran les còpies.
+9. A la pestanya **Configuración adicional**, a la secció **Orígenes de datos**, a **Usar datos existentes**, seleccioneu **Ejemplo**. Es crearà la base de dades d'exemple `AdventureWorksLT` perquè tingueu taules i dades per consultar. 
 
-Seleccioneu Següent: Xarxes.
+10. Seleccioneu **Revisar + crear**.
 
-A la pestanya Xarxes, a Mètode de connectivitat, seleccioneu Punt de connexió públic.
+  <div style="text-align: center;">
+    <img src="https://github.com/victordomgs/M0372_M0377_BBDD_ASIX/blob/main/M0377/BA2-Azure/images/Figura%205.png" width="650" height="auto"/>
+  </div>
 
-A Regles de tallafoc (firewall), establiu Afegir adreça IP del client actual en Sí. Deixeu l'opció Permetre que els serveis i recursos d'Azure accedeixin a aquest servidor en No.
-
-A Directiva de connexió, trieu la Directiva per defecte i deixeu la Versió mínima de TLS al valor 1.2.
-
-Seleccioneu Següent: Seguretat.
-
-A la pàgina Seguretat, podeu optar per iniciar una avaluació gratuïta de Microsoft Defender for SQL, així com configurar Ledger, Identitats gestionades i el xifratge de dades (TDE) si ho desitgeu. Seleccioneu Següent: Configuració addicional.
-
-A la pestanya Configuració addicional, a la secció Orígens de dades, a Utilitzar dades existents, seleccioneu Exemple. Es crearà la base de dades d'exemple AdventureWorksLT perquè tingueu taules i dades per consultar. També podeu configurar la intercol·lació i la finestra de manteniment.
-
-Seleccioneu Revisar i crear.
-
-A la pàgina de revisió, un cop verificat tot, seleccioneu Crear.
+11. A la pàgina de revisió, un cop verificat tot, seleccioneu **Crear**.
