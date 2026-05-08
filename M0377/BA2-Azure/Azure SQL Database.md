@@ -4,7 +4,7 @@ En aquesta primera fase, creareu una base de dades única a Azure SQL Database m
 
 #### Requisits previs
 
-- Una subscripció d'Azure activa. Ja tenim!
+- Una subscripció d'Azure activa. **Ja tenim!**
 - Treballarem amb l'Azure Portal. Opcionalment, utilitzeu la versió més recent d'Azure PowerShell o de la CLI d'Azure.
 
 #### Permisos
@@ -101,3 +101,4 @@ L'Azure Portal proporciona una opció **d'entorn de càrrega de treball** que aj
 
 <br>
 
+**Documentació:** https://learn.microsoft.com/es-es/azure/azure-sql/database/single-database-create-quickstart?view=azuresql&tabs=azure-portal
